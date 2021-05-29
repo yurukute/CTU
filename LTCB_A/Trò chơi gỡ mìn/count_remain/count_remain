@@ -1,0 +1,9 @@
+int count_remain(){
+    int count = 0;
+    for(int i = 0; i < M; i++){
+        for(int j = 0; j < N; j++){
+            count += (T[i][j] == 0);
+        }
+    }
+    return count;
+}
