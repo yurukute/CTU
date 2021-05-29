@@ -18,14 +18,14 @@ Ví dụ: giả sử bảng đồ mìn B như bên dưới:
 <img src="../images/count-mine.png" width="250">
 
 thì kết quả in ra sẽ là:
-
-  0 1 2 3 4\
-0 . 1 1 1 .\
-1 . 1 x 1 .\
-2 1 2 2 1 .\
-3 1 x 1 . .\
+```
+  0 1 2 3 4
+0 . 1 1 1 .
+1 . 1 x 1 .
+2 1 2 2 1 .
+3 1 x 1 . .
 4 1 1 1 . .
-
+```
 **Khuôn dạng (prototype)**
 - Tên hàm: printMap1
 - Tham số: không
