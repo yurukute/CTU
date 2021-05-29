@@ -15,7 +15,7 @@ Hãy viết hàm `printMap1()` để in bản đồ mìn theo quy tắc:
 
 Ví dụ: giả sử bảng đồ mìn B như bên dưới:
 
-
+<img src="../images/count-mine.png" width="250">
 
 thì kết quả in ra sẽ là:
 

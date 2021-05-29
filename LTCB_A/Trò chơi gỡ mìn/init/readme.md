@@ -10,7 +10,7 @@ int T[M][N];
 ```
 Hãy viết hàm `init()` để khởi tạo bản đồ mìn B như hình vẽ:
 
-<img src="https://github.com/yurukute/CTU/blob/main/LTCB_A/Trò chơi gỡ mìn/images/init.png" width="250">
+<img src="../images/init.png" width="250">
 
 Tất cả các ô đều có trạng thái 0 (chưa mở).
 

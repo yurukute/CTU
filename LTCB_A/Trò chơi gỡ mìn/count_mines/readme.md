@@ -12,11 +12,11 @@ Hãy viết hàm `count_mines()` để đếm số ô chứa mìn xung quanh cá
 
 Ví dụ: giả sử bảng đồ mìn B được khởi tạo như sau:
 
-<img src="https://github.com/yurukute/CTU/blob/main/LTCB_A/Trò chơi gỡ mìn/images/init.png" width="250">
+<img src="../images/init.png" width="250">
 
 thì kết quả của việc đếm số mìn trong 8 ô xung quanh của mỗi ô sẽ như bên dưới:
 
-<img src="https://github.com/yurukute/CTU/blob/main/LTCB_A/Trò chơi gỡ mìn/images/count-mine.png" width="250">
+<img src="../images/count-mine.png" width="250">
 
 Trong 8 ô xung quanh ô (2, 1) có 2 trái mìn (ở ô (3,1) và (-1,2))
 
