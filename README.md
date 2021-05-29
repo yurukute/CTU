@@ -1,2 +1,2 @@
 # CTU
-Repo tổng hợp các bài làm trên hệ thống else.ctu.edu.vn
+Repo tổng hợp các bài làm trên hệ thốn https://else.ctu.edu.vn/
