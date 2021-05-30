@@ -9,8 +9,8 @@ Bằng cách sử dụng những phép toán chuẩn trên danh sách đã cho t
 - Định nghĩa các hàm nhập và hiển thị danh sách
 - Định nghĩa hàm xóa phần tử x được tìm thấy đầu tiên trong danh sách
 - Viết hàm main(): 
-    -  Khai báo danh sách kiểu List
-    -  Gọi thực thi hàm nhập và hiển thị danh sách
+    - [Khai báo danh sách](https://github.com/yurukute/CTU/blob/main/CTDL/Khai%20báo%20danh%20sách/Danh%sách/declareList.c) kiểu List
+    - Gọi thực thi hàm nhập và hiển thị danh sách
     - Nhập vào một giá trị x
     - Gọi hàm xóa phần tử x xuất hiện đầu tiên
     - Hiển thị kết quả danh sách sau khi xóa
