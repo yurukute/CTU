@@ -1,7 +1,7 @@
 float getAvg(List L){
     float S = 0;
-    for(int i = 0; i < L.Last; i++){
-        S += L.Elements[i];
+    for(Position P = 1; P <= L.Last; P++){
+        S += L.Elements[P-1];
     }
     return (S ? S / L.Last : -10000);
 }
