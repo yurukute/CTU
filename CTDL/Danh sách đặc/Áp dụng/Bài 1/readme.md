@@ -2,7 +2,7 @@ Cho mô hình một danh sách các số nguyên List như sau:
 
 <img src="../dsdac2.png">
 
-Bằng cách sử dụng những phép toán chuẩn trên danh sách đã cho trong thư viện [AListLib.c](../AlistLib.c), hãy viết chương trình nhập một danh sách từ bàn phím và cho phép xóa phần tử x xuất hiện đầu tiên trong danh sách
+Bằng cách sử dụng những phép toán chuẩn trên danh sách đã cho trong thư viện [AListLib.c](../AListLib.c), hãy viết chương trình nhập một danh sách từ bàn phím và cho phép xóa phần tử x xuất hiện đầu tiên trong danh sách
 
 **Gợi ý**
 - `#include "AListLib.c"`
