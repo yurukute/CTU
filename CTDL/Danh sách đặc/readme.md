@@ -3,7 +3,7 @@
 
 Hình ảnh của danh sách đặc như hình sau:
 
-<img src="./dsdac1.png">
+<img src="./Danh sách sinh viên/dsdac1.png">
 
 Trong đó, Last là biến nguyên chỉ đến số phần tử trong danh sách, Maxlength là số phần tử tối đa trong mảng
 
