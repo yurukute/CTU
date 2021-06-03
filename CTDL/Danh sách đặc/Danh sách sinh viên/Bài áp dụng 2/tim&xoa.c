@@ -54,19 +54,24 @@ void hienthi(DanhSach L){
         printf("%s - %s - %.2f - %.2f - %.2f\n", L.A[i].MSSV, L.A[i].HoTen, L.A[i].DiemLT, L.A[i].DiemTH1, L.A[i].DiemTH2);
 }
 
-void khongDat(DanhSach L, DanhSach *pL){
-    dsRong(pL);
-    for(int i = 0; i < L.n; i++){
-        if(L.A[i].DiemLT + L.A[i].DiemTH1 + L.A[i].DiemTH2 < 4)
-            chenCuoi(L.A[i], pL);
+void xoa(char s[10], DanhSach *pL){
+    int p = tim(s, *pL);
+    if(p != pL->n+1){
+        printf("Tim thay sinh vien %s. Thong tin sinh vien:\n", s);
+        printf("%s - %s - %.2f - %.2f - %.2f\n", pL->A[p-1].MSSV, pL->A[p-1].HoTen, pL->A[p-1].DiemLT, pL->A[p-1].DiemTH1, pL->A[p-1].DiemTH2);
+        for(int i = p; i < pL->n; i++)
+            pL->A[i-1] = pL->A[i];
+        pL->n--;
     }
+    else printf("Khong tim thay sinh vien %s", s);
 }
 
 int main(){
     DanhSach sv = nhap();
+    char c; scanf("%c", &c); //scan dòng newline thừa
+    char s[10];
+    fgets(s, 10, stdin);
+    s[strlen(s) - 1] = '\0';
     hienthi(sv);
-    printf("Sinh vien KHONG DAT\n");
-    DanhSach svKDat;
-    khongDat(sv, &svKDat);
-    hienthi(svKDat);
+    xoa(s, &sv);
 }
