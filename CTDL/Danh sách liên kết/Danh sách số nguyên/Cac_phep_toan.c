@@ -15,12 +15,7 @@ Position locate(ElementType x, List L){
 }
 
 void deleteList(Position P, List *L){
-    Position temp;
-	if (P->Next != NULL) {  
-		temp = P->Next; 
-		P->Next = temp->Next; 
-		free(temp);
-	}
+    P->Next = P->Next->Next;
 }
 
 void erase(int x, List *pL){
