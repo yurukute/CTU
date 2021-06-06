@@ -6,7 +6,7 @@ Trong đa số trường hợp người ta thêm nút (ô) đầu tiên làm ch�
 
 Hình ảnh của danh sách liên kết L được biểu diễn như sau:
 
-<img src="./Dslk.png">
+<img src="./Danh sách số nguyên/Dslk.png">
 
 Trong đó, Node là một cấu trúc gồm 2 trường:  Element là giá trị 1 phần tử của danh sách và Next chỉ địa chỉ của Node kế tiếp.
 
