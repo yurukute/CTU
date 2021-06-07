@@ -1,6 +1,6 @@
 Cho mô hình một danh sách các số nguyên List như sau:
 
-<img src="../dsdac2.png">
+<img src="../dsdac.png">
 
 Bằng cách sử dụng những phép toán chuẩn trên danh sách, hãy viết chương trình cho phép liệt kê các số chẵn và tính trung bình cộng các phần tử là số chẵn trong danh sách
 

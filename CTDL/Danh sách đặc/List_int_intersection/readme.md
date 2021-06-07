@@ -1,6 +1,6 @@
 Cho mô hình một danh sách các số nguyên List biểu diễn tập hợp như sau:
 
-<img src="../dsdac2.png">
+<img src="../dsdac.png">
 
 Bằng cách sử dụng những phép toán chuẩn trên danh sách, hãy viết chương trình cho phép tìm tập hợp giao của 2 danh sách biểu diễn tập hợp
 

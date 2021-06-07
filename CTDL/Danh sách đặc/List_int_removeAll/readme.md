@@ -1,6 +1,6 @@
 Cho mô hình một danh sách các số nguyên List như sau:
 
-<img src="../dsdac2.png">
+<img src="../dsdac.png">
 
 Bằng cách sử dụng những phép toán chuẩn trên danh sách, hãy viết chương trình cho phép xóa tất cả các phần tử x trong danh sách
 
