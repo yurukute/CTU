@@ -17,6 +17,15 @@ int member(int x, List L){
     return 0;
 }
 
+// Tính tập hợp hiệu 
+void difference(List L1, List L2, List *pL){
+	makenullList(pL);
+	for(Position P = 1; P < L1.Last + 1; P++){
+		if(!member(L1.Element[P-1], L2))
+			insertList(L1.Element[P-1], PL)
+	}
+}
+
 //Chuẩn hóa: xóa các phần tử trùng
 void normalize(List *L){
     for(Position P = 1; P <= L->Last; P++){
@@ -62,4 +71,24 @@ void sort(List *pL){
             }
         }
     }
+}
+
+void intersection(List L1, List L2, List *pL){
+    makenullList(pL);
+    for(Position P = 1; P < L1.Last+1; p++){
+        int x = L1.Elements[p];
+        if(member(x, L2) && !member(x, *pL))
+            insertSet(x,pL);
+    }
+}
+
+void unionSet(List L1, List L2, List *pL){
+	makenullList(pL);
+	for(Position P = 1; P < L1.Last+1; P++){
+		insertSet(L1.Elements[P-1], pL);
+	}
+	for(Position P = 1; P < L2.Last+1; P++){
+		if(!member(L2.Elements[P-1], *pL))
+            insertSet(L2.Elements[P-1], pL);
+	}
 }
