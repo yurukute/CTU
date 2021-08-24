@@ -19,6 +19,14 @@ void printList(List L){
     printf("\n");
 }
 
+void printOdd(List L){
+    for(Position P = 1; P <= L.Last; P++){
+        if(L.Elements[P-1] % 2)
+            printf("%d ", L.Elements[P-1]);
+    }
+    print("\n");
+}
+
 void copyEven(List *L2, List L1){
     makenullList(L2);
     for(Position P = 1; P <= L1.Last; P++){
@@ -27,19 +35,11 @@ void copyEven(List *L2, List L1){
     }
 }
 
-float getAvg(List L){
-    float S = 0;
-    for(Position P = 1; P <= L.Last; P++){
-        S += L.Elements[P-1];
-    }
-    return (S ? S / L.Last : -10000);
-}
-
 int main(){
     List L;
     readList(&L);
     printList(L);
+    printOdd(L);
     copyEven(&L, L);
     printList(L);
-    printf("%.3f", getAvg(L));
 }
