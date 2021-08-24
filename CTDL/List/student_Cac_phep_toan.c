@@ -1,3 +1,13 @@
+DanhSach dsRong(){
+    DanhSach L;
+    L.n = 0;
+    return L;
+}
+
+int ktRong(DanhSach L){
+    return L.n == 0;
+}
+
 void chenCuoi(struct SinhVien s, DanhSach *pL){
     if (pL->n == 40){
         printf("Loi! Danh sach day!");
@@ -7,29 +17,23 @@ void chenCuoi(struct SinhVien s, DanhSach *pL){
     pL->n++;
 }
 
-void hienthi(DanhSach L){
-    for(int i = 0; i <L.n; i++){
-        printf("%s - %s - %.2f - %.2f - %.2f - %.2f\n", L.A[i].MSSV, L.A[i].HoTen, L.A[i].DiemLT, L.A[i].DiemTH1, L.A[i].DiemTH2, L.A[i].DiemLT + L.A[i].DiemTH1 + L.A[i].DiemTH2);
-    }
-}
-
-void hienthiDat(DanhSach L){
-    for(int i = 0; i <L.n; i++){
-        if(L.A[i].DiemLT + L.A[i].DiemTH1 + L.A[i].DiemTH2 >= 4)
-            printf("%s - %s - %.2f - %.2f - %.2f - %.2f\n", L.A[i].MSSV, L.A[i].HoTen, L.A[i].DiemLT, L.A[i].DiemTH1, L.A[i].DiemTH2, L.A[i].DiemLT + L.A[i].DiemTH1 + L.A[i].DiemTH2);
-    }
-}
-
-int ktRong(DanhSach L){
-    return L.n == 0;
-}
-
 int tim(char s[], DanhSach L){
     for(int i = 1; i < L.n+1; i++){
         if(strcmp(L.A[i-1].MSSV, s) == 0)
             return i;     
     }
     return L.n+1;
+}
+
+void xoaTai(int p, DanhSach *pL){
+    for(int i = p; i < pL->n; i++){
+        pL->A[i-1] = pL->A[i];
+    }
+    pL->n--;
+}
+
+void xoaSinhVien(char x[], DanhSach *pL){
+    xoaTai(tim(x,*pL), pL);
 }
 
 DanhSach nhap(){
@@ -52,10 +56,15 @@ DanhSach nhap(){
     return L;
 }
 
-void xoaTai(int p, DanhSach *pL){
-    for(int i = p; i < pL->n; i++){
-        pL->A[i-1] = pL->A[i];
+void hienthi(DanhSach L){
+    for(int i = 0; i <L.n; i++){
+        printf("%s - %s - %.2f - %.2f - %.2f - %.2f\n", L.A[i].MSSV, L.A[i].HoTen, L.A[i].DiemLT, L.A[i].DiemTH1, L.A[i].DiemTH2, L.A[i].DiemLT + L.A[i].DiemTH1 + L.A[i].DiemTH2);
     }
-    pL->n--;
 }
 
+void hienthiDat(DanhSach L){
+    for(int i = 0; i <L.n; i++){
+        if(L.A[i].DiemLT + L.A[i].DiemTH1 + L.A[i].DiemTH2 >= 4)
+            printf("%s - %s - %.2f - %.2f - %.2f - %.2f\n", L.A[i].MSSV, L.A[i].HoTen, L.A[i].DiemLT, L.A[i].DiemTH1, L.A[i].DiemTH2, L.A[i].DiemLT + L.A[i].DiemTH1 + L.A[i].DiemTH2);
+    }
+}
