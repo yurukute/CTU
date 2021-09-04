@@ -1,0 +1,1 @@
+Viết chương trình giải phương trình bậc 2 trong đó gồm 2 hàm static giải phương trình bậc 1 (2 tham số) và giải phương trình bậc 2 (3 tham số).
