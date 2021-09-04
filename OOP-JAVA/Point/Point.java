@@ -29,6 +29,6 @@ public class Point{
 		return Math.sqrt((x * x) + (y * y));
 	}
 	public double distance(Point P){
-		return Math.sqrt(Math.pow(x - P.x, 2) + Math.pow(y - P.y, 2));
+		return Math.sqrt(Math.pow(x - P.getX(), 2) + Math.pow(y - P.getY(), 2));
 	}
 }
