@@ -30,7 +30,10 @@ Position endList(List L) {
 	return L.Last+1;
 }
  
-Position next(Position P, List L) {	
+Position next(Position P, List L){
+	if (P<1 || P>L.Last){
+		return -1;
+	}
 	return P+1;
 }
 
@@ -69,4 +72,13 @@ void deleteList(Position P,List *L) {
 				L->Elements[Q] = L->Elements[Q+1];
 			L->Last--;
 		}
+}
+
+void printList(List L){
+	Position P= first(L);
+	while (P != endList(L)){
+		printf("%d ", retrieve(P,L));
+		P=next(P,L);
+	}
+	printf("\n");	
 }
