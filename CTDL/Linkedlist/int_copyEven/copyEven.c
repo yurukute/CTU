@@ -44,12 +44,23 @@ void printList(List L){
     printf("\n");
 }
 
-void removeAll(int x, List *pL){
-    Position P = *pL;
+void printOddNumbers(List L){
+    Position P = L;
     while(P->Next != NULL){
-        if(P->Next->Element == x)
-            P->Next = P->Next->Next;
-        else P = P->Next;
+        if(P->Next->Element % 2)    
+            printf("%d ", P->Next->Element);
+        P = P->Next;
+    }
+	printf("\n");
+}
+
+void copyEvenNumbers(List L1, List *pL2){
+    makenullList(pL2);
+    Position P = L1;
+    while(P->Next != NULL){
+        if(P->Next->Element % 2 == 0)
+            append(P->Next->Element, pL2);
+        P = P->Next;
     }
 }
 
@@ -57,8 +68,8 @@ int main(){
     List L;
     getList(&L);
     printList(L);
-    int x;
-    scanf("%d", &x);
-    removeAll(x, &L);
-    printList(L);
+    printOddNumbers(L);
+	List L2;
+	copyEvenNumbers(L, &L2);
+    printList(L2);
 }
