@@ -13,7 +13,7 @@ Hình ảnh của danh sách L có dạng như bên dưới
 Giả sử khai báo kiểu List đã được định nghĩa. Hãy viết 1 hàm trả về 1 danh sách sinh viên rỗng.
 
 **Nguyên mẫu**
-- Tên hàm: getList()
+- Tên hàm: `getList()`
 - Tham số: không
 - Kiểu trả về: List
 

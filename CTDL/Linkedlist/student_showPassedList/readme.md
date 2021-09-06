@@ -31,7 +31,7 @@ int main()
 	//Gọi hàm nhập ds từ bàn phím, gọi hàm hiển thị ds và hàm hiển thị SV ĐẠT
 	...
 			
-     return 0;
+	return 0;
 }
 ```
 

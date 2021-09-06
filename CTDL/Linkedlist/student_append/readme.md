@@ -9,7 +9,7 @@ Cho trước khai báo danh sách List và phép toán struct Node* locate(char[
 Hãy viết hàm thêm một sinh viên s vào cuối danh sách cho trước.
 
 **Nguyên mẫu**
-- Tên hàm: append()
+- Tên hàm: `append()`
 - Tham số: 
     - s: cấu trúc Student
     - pL: con trỏ danh sách

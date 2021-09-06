@@ -21,13 +21,13 @@ typedef struct Node* Position;
 typedef Position DaThuc;
 ```
 Cho trước khai báo của kiểu DaThuc như trên.
-- Hàm DaThuc khoitao() cũng được cho sẵn để trả về 1 danh sách rỗng.
-- Hàm void chenDonThuc(DonThuc e, DaThuc *pD): chèn đơn thức e vào đa thức chỉ bởi con trỏ pD. Hàm này cũng được hỗ trợ.
+- Hàm `DaThuc khoitao()` cũng được cho sẵn để trả về 1 danh sách rỗng.
+- Hàm `void chenDonThuc(DonThuc e, DaThuc *pD)`: chèn đơn thức e vào đa thức chỉ bởi con trỏ pD. Hàm này cũng được hỗ trợ.
 
 Hãy viết hàm hiển thị một đa thức lên màn hình.
 
 **Nguyên mẫu**
-- Tên hàm: inDaThuc()
+- Tên hàm: `inDaThuc()`
 - Tham số: 
   - d: DaThuc
 - Kiểu trả về: không

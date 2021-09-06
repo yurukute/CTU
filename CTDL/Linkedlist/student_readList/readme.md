@@ -5,9 +5,9 @@ Hình ảnh của danh sách L có dạng như bên dưới
 <img src="../Dslk.png">
 
 Cho trước khai báo danh sách List và các phép toán:
-- List getList() - hàm trả về một danh sách rỗng
-- struct Node* locate(char[] ID, List L) - trả về vị trí xuất hiện đầu tiên của  mã số ID trong danh sách L.
-- int append(Student s, List *pL) - Nối sinh viên s vào cuối danh sách chỉ bởi con trỏ pL và trả về 1 nếu mã số sinh viên chưa có; nếu mã số đã có thì kết quả trả về của hàm là 0 mà không thêm sinh viên này vào
+- `List getList()` - hàm trả về một danh sách rỗng
+- `struct Node* locate(char[] ID, List L)` - trả về vị trí xuất hiện đầu tiên của  mã số ID trong danh sách L.
+- `int append(Student s, List *pL)` - Nối sinh viên s vào cuối danh sách chỉ bởi con trỏ pL và trả về 1 nếu mã số sinh viên chưa có; nếu mã số đã có thì kết quả trả về của hàm là 0 mà không thêm sinh viên này vào
 
 Hãy viết nhập một danh sách sinh viên từ bàn phím.
 
@@ -53,12 +53,12 @@ int main(){
 Hãy HOÀN CHỈNH CHƯƠNG TRÌNH TRÊN bằng cách điền các lệnh cần thiết vào dấu ... (trong hàm readList()) để tạo thành 1 chương trình có thể thực thi được.
 
 **Nguyên mẫu**
-- Tên hàm: readList()
+- Tên hàm: `readList()`
 - Tham số: không
 - Kiểu trả về: danh sách (List)
 
 **Thân hàm**
-- Ban đầu cho danh  sách kết quả là rỗng. Nhập số lượng sinh viên n; sau đó với mỗi sinh viên thứ i, nhập các thông tin cần thiết của họ và gọi hàm append() để nối vào danh sách kết quả. Kết quả của hàm là danh sách kết quả
+- Ban đầu cho danh  sách kết quả là rỗng. Nhập số lượng sinh viên n; sau đó với mỗi sinh viên thứ i, nhập các thông tin cần thiết của họ và gọi hàm `append()` để nối vào danh sách kết quả. Kết quả của hàm là danh sách kết quả
 
 **Chú ý**
 - Chỉ viết phần được yêu cầu, KHÔNG VIẾT TOÀN BỘ CHƯƠNG TRÌNH
