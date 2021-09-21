@@ -1,3 +1,5 @@
+package buoi1;
+
 public class GiaiPT {
     public static void GiaiPTBac1(float a, float b){
         System.out.print(a == 0 ? b == 0 ? "Vô số nghiệm" : "Vô nghiệm" : "x =" + (-b/a));
