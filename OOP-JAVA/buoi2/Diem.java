@@ -13,6 +13,10 @@ public class Diem {
 	x = x1;
 	y = y1;
     }
+    public Diem(Diem s){
+	x = s.x;
+	y = s.y;
+    }
     public void nhap(){
 	Scanner sc = new Scanner(System.in);
 	x = sc.nextInt();
@@ -20,6 +24,14 @@ public class Diem {
     }
     public void in(){
 	System.out.println("(" + x + ", " + y + ")");
+    }
+    public void in(String s){
+	System.out.println(s);
+	System.out.println("(" + x + ", " + y + ")");
+    }
+    
+    public String toString(){
+	return "(" + x + ", " + y + ")";
     }
     public void doiDiem(int dx, int dy){
 	x += dx;
