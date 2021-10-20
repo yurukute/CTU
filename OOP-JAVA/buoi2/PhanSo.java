@@ -28,21 +28,20 @@ public class PhanSo {
     }
 
     public void in(){	
-		if(mau < 0) tu = -tu;
-		/* Chuan hoa phan so
-		boolean dau = false;
-		if(tu < 0) {
-			dau = true;
-			tu = -tu;
-		}
-		for(int i = tu; i > 1; i--) {
-			if(mau % i == 0 && tu % i == 0) {
-				mau /= i;
-				tu /= i;
-				break;
-			}
-		}
-		if(dau) tu = -tu;*/
+		if(mau < 0) tu = -tu;		
+		// boolean dau = false;
+		// if(tu < 0) {
+		// 	dau = true;
+		// 	tu = -tu;
+		// }
+		// for(int i = tu; i > 1; i--) {
+		// 	if(mau % i == 0 && tu % i == 0) {
+		// 		mau /= i;
+		// 		tu /= i;
+		// 		break;
+		// 	}
+		// }
+		// if(dau) tu = -tu;
 		System.out.println(tu == 0 ? 0 : mau == 1 ? tu : tu + "/" + mau);
     }
 
