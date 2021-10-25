@@ -7,23 +7,23 @@ import buoi2.Diem;
 public class DiemMau extends Diem{
     private String mau;
 
-	DiemMau(){
+	public DiemMau(){
 		super();
 		mau = new String();
 	}
 	
-	DiemMau(int x, int y, String mau){
+	public DiemMau(int x, int y, String maumoi){
 		super(x, y);
-		mau = new String(mau);
+		mau = new String(maumoi);
 	}
 
-	DiemMau(DiemMau dm){
+	public DiemMau(DiemMau dm){
 		super((Diem) dm);
 		mau = new String(dm.mau); 
 	}
 	
-	public void GanMau(String mau){
-		mau = new String(mau);
+	public void GanMau(String maumoi){
+		mau = new String(maumoi);
 	}
 
 	public void nhap(){

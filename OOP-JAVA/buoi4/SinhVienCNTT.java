@@ -22,11 +22,11 @@ public class SinhVienCNTT extends SinhVien{
 	public void nhap(){
 		super.nhap();
 		Scanner sc = new Scanner(System.in);
-		System.out.print("\nNhap tai khoan: ");
+		System.out.print("Nhap tai khoan: ");
 		tkhoan = sc.nextLine();
-		System.out.print("\nNhap mat khau: ");
+		System.out.print("Nhap mat khau: ");
 		mkhau = sc.nextLine();
-		System.out.print("\nNhap email: ");
+		System.out.print("Nhap email: ");
 		email = sc.nextLine();
 	}
 
@@ -46,5 +46,8 @@ public class SinhVienCNTT extends SinhVien{
 	public String getEmail(){
 		return email;
 	}
-	
+
+	public String getTkhoan(){
+		return tkhoan;
+	}
 }
