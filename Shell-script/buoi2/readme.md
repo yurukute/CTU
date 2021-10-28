@@ -11,7 +11,7 @@ Hello <tên người dùng đang đăng nhập> !!!
 Your current working directory: <thư mục hiện hành> 
 Your home directory: <thư mục cá nhân> 
 Please press any key to finish: <chờ nhận một phím>
-					 Thank you very much!!
+                     Thank you very much!!
 \****************************************\ 
 ```
 ### Bài 3
