@@ -1,0 +1,8 @@
+#!/bin/bash
+clear
+echo "Tham so ban da truyen vao la 2 so: $1 va $2
+Tong: x + y = `expr $1 + $2`
+Hieu: x – y = `expr $1 - $2`
+Tich: x * y = `expr $1 \* $2`
+Thuong: x / y = `expr $1 / $2`
+So du: x % y = `expr $1 % $2`"

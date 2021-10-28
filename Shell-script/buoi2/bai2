@@ -1,0 +1,10 @@
+#!/bin/bash
+clear
+echo ""\\****************************************\\
+echo "Today is:" ;date
+echo "Hello $LOGNAME !!!
+Your current working directory: $PWD
+Your home directory: $HOME"
+read -n 1 -r -p "Please press any key to finish: "
+echo -e "\n			Thank you very much!!
+\\****************************************\\"
