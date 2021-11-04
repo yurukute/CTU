@@ -1,0 +1,13 @@
+#!/bin/bash
+echo "Giai phuong trinh bac nhat: ax + b = 0"
+echo -n "Nhap he so a: "; read a
+echo -n "Nhap he so b: "; read b
+if [ $a -eq "0" ]; then
+   if [ $b -eq "0" ]; then
+	   echo "VO SO NGHIEM"
+   else	   
+	   echo "VO NGHIEM"
+   fi
+else
+	echo x = $((b * -1))/$a
+fi

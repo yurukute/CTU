@@ -1,0 +1,19 @@
+#!/bin/bash
+while
+	echo -n "Bang cuu chuong: "; read n;
+	for i in {1..10}
+	do
+		echo $i x $n = $((i * n))
+	done
+	while
+		echo -n "Ban co muon tiep tuc khong? (y/n) : ";		
+		read ans
+		case $ans in
+			"y") loop=1;;
+			"n") loop=0;;
+			*) echo "LUU Y: Chi nhap 'y' hoac 'n'";;
+		esac
+		[ $ans != "y" ] && [ $ans != "n" ]
+	do :; done
+	[ $loop == 1 ]
+do :; done
