@@ -1,0 +1,10 @@
+#!/bin/bash
+n=6
+while [ $n -gt 0 ]
+do
+	echo $n
+	n=$((n - 1))
+	trap 'continue' 2
+	sleep 5
+done
+trap '' 2

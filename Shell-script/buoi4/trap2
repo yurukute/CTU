@@ -1,0 +1,10 @@
+#!/bin/bash
+n=5
+while [ $n -gt 0 ]
+do
+	echo Shutdown in $n minutes
+	n=$((n-1))   
+	trap 'continue' 2
+	sleep 1
+done
+trap '' 2

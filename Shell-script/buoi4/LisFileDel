@@ -1,0 +1,8 @@
+#!/bin/bash
+for i
+do
+	cat $i
+	echo
+	trap 'continue' 2
+done
+trap '' 2
