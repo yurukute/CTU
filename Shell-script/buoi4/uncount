@@ -7,4 +7,4 @@ do
 	trap 'continue' 2
 	sleep 5
 done
-trap '' 2
+trap 2

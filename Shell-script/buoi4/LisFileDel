@@ -5,4 +5,4 @@ do
 	echo
 	trap 'continue' 2
 done
-trap '' 2
+trap 2
