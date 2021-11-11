@@ -2,7 +2,7 @@
 n=6
 while [ $n -gt 0 ]
 do
-	echo $n
+	echo -n -e "$n\t"
 	n=$((n - 1))
 	trap 'continue' 2
 	sleep 5
