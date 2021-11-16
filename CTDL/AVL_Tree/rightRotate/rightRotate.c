@@ -1,4 +1,4 @@
- AVLTree rightRotate(AVLTree node){
+AVLTree rightRotate(AVLTree node){
 	AVLTree newNode = node->Left;
 	node->Left		= newNode->Right;
 	newNode->Right	= node;
@@ -6,7 +6,7 @@
 	int left		= getHeight(node->Left);
 	int	right		= getHeight(node->Right);
 	node->Height	= (left > right ? left : right) + 1;
-	if(node->Height > newNode->Height)
+	if(node->Height >= newNode->Height)
 		newNode->Height = node->Height + 1;	   
 	return newNode;	
 }
