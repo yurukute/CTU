@@ -5,7 +5,7 @@ SANPHAM(**MaSP**, TenSP, DVT): `MaSP` là khóa chính, `tenSP` và `DVT` not nu
 
 (thay cột `STT` thành `MaSP` và nhập các giá trị là SP01..SP20)
 
-<img src="image1.png">
+<img src="image1.png" width="400">
 
 Bảng Nhanvien(**MaNV**, HotenNV, Dienthoai, Email)
 - có `MaNV` là khóa chính, `hoten` not null, `DT` not null, `Email` null
@@ -19,14 +19,14 @@ Bảng Phieuxuat(**SoPX**, *MaNV, MaKH*, Ngayban)
 - `SoPX` là khóa chính, 
 - `MaNV`, `MAKH` là khóa ngoại.
 
-<img src="image3.png">
+<img src="image3.png" width="400">
 
 Bảng ChitietPX(***SoPX, MaSP***, Soluong, Giaban)
 - `SoPX` và `MaSP` là khóa ngoại
 - Khóa chính: (SoPX, MASP)
 - `Soluong` và `giaban` > 0
 
-<img src="image4.png">
+<img src="image4.png" width="400">
 
 - Thay giá bán của dòng (PX008, P09) thành 5100000
 - Xóa dòng (PX004, SP07)
