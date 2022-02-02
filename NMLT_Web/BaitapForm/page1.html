@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Using Tables</title>
+    <meta charset="UTF-8"/>
+    <style>
+     table, th, td {
+       margin-left: auto;
+       margin-right: auto;
+       border: 2px outset;
+       background-color: lavender;
+       border-spacing: 2px;       
+     }
+     th, td {
+       border-style: inset;
+       padding: 6px;
+     }
+    </style>
+  </head>
+  <body>
+    <table >
+      <caption>Creating a Table</caption>
+      <tr>
+        <th colspan="2" style="border-style: none"></th>
+        <th>NUTS</th>
+        <th>BOLTS</th>
+        <th>Hammers</th>
+      </tr>
+      <tr>
+        <td rowspan="3">Quarter 1</td>
+        <td>Jan</td>
+        <td>2500</td>
+        <td>1000</td>
+        <td>1240</td>
+      </tr>
+      <tr>
+        <td>Feb</td>
+        <td>3000</td>
+        <td>2500</td>
+        <td>4000</td>
+      </tr>
+      <tr>
+        <td>March</td>
+        <td>3200</td>
+        <td>1000</td>
+        <td>2400</td>
+      </tr>
+    </table>
+  </body>
+</html>

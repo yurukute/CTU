@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Job application</title>
+    <meta charset="UTF-8"/>    
+  </head>
+  <body>
+    <form method="post" action="" enctype="multipart/form-data">
+      <h1 style="text-align:center">Application Form</h1>
+      <hr/>
+      <br/>
+      <p>
+        <label for="fname">Name:</label>
+        <input id="fname" type="text"/>
+      </p>
+      <p>Area of Interest</p>
+      <p>
+        <input type="radio" name="interest" id="wdes" value="Web Designer" checked/>
+        <label for="wdes">Web Designer</label>
+
+        <input type="radio" name="interest" id="wadm" value="Web Administator"/>
+        <label for="wadm">Web Administrator</label>
+
+        <input type="radio" name="interest" id="wdev" value="Web Developer" />
+        <label for="wdev">Web Developer</label>
+      </p>
+      <p>
+        Experience
+        <select>
+          <option>None</option>
+        </select>
+      </p>
+      <p>
+        Comments
+        <br/>
+        <textarea rows="5" cols="30" placeholder="Type your comments here."></textarea>
+      </p>
+      <p><input type="checkbox"/>Send acknowledgement</p>
+      <p>
+        <input type="submit" value="OK"/>
+        <input type="reset" value="RESET"/>
+      </p>
+    </form>
+  </body>
+</html>
+

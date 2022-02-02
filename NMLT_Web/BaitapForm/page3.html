@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8"/>    
+  </head>
+  <body>
+    <form method="post" action="" enctype="multipart/form-data">
+      <h2 style="text-align: center">APPLICATION FORM</h2>
+      <p>
+        <label for="FName">First Name</label>
+        <input id="FName" type="text" name="name" required/>
+      </p>
+      <p>
+        Education        
+        <input id="graduate" type="checkbox" name="education" checked />
+        <label for="graduate">Graduate</label>
+        
+        <input id="post-graduate" type="checkbox" name="education" />
+        <label for="post-graduate">Post Graduate</label>        
+      </p>
+      <p>
+        Gender        
+        <input id="male" type="radio" name="gender" checked />
+        <label for="male">Male</label>
+
+        <input id="female" type="radio" name="gender" />
+        <label for="post-graduate">Female</label>        
+      </p>
+      <p>
+        <label for="salary">Salary</label>
+        <input id="salary" type="number" name="salary" required />
+      </p>
+      <p>
+        <label for="remark">Remarks</label>
+        <textarea id="remark" placeholder="Type your text here" rows="3" cols="30"></textarea>
+      </p>
+      <p>
+        <label for="country">Country</label>        
+        <select id="country" name="country">
+          <option selected>Australia</option>
+        </select>        
+      </p>
+      <p style="text-align: center">
+        <input type="submit" value="SUBMIT"/>
+        <input type="reset" value="RESET"/>
+      </p>      
+    </form>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Interview Feedback</title>
+    <meta charset="UTF-8"/>
+  </head>
+  <body style="font-family:cursive">
+    <form method="post" action="" enctype="multipart/form-data">
+      <h2 style="text-align:center">Interview Feedback</h2>
+      <h3><b>This type of form may be on easy way to consolidata/standardize feedback on interview candidates.</b></h3>
+      <p>
+        <label for="name"><b>Candidate Name</b></label>
+        <input type="text" name="name" id="name" value="" size="10" required />
+        
+        <label for="pos"><b>Position Applied For</b></label>
+        <input type="text" name="posistion" id="pos" value="" size="10" required />
+      </p>
+      <table>
+        <tr>
+          <td><b>Education Level</b></td>
+          <td><b>Candidate is a good fit for the position</b></td>
+        </tr>
+        <tr>
+          <td rowspan="5" style="vertical-align:top">
+            <select>
+              <option>1) High School</option>
+              <option>2) Bachelors Degree</option>
+              <option>3) Masters Degree</option>
+              <option>4) Doctoral Degree</option>
+              <option>5) Professional Certification</option>
+            </select>
+          </td>
+          <td>
+            <input id="agree" type="radio" name="good-fit" value="agree"/>
+            <label for="agree">Agree</label>          
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input id="swagree" type="radio" name="good-fit" value="somewhat agree"/>
+            <label for="swagree">Somewhat agree</label>          
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input id="neutral" type="radio" name="good-fit" value="netrual"/>
+            <label for="neutral">Netrual</label>          
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input id="swdisagree" type="radio" name="good-fit" value="somewhat disagree"/>
+            <label for="swdisagree">Somewhat Disagree</label>          
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input id="disagree" type="radio" name="good-fit" value="disagree"/>
+            <label for="disagree">Disagree</label>          
+          </td>
+        </tr>
+      </table>
+      <p>
+        <b>Should we hire this candidate?</b>
+        <input type="radio" name="hire" value="yes" id="hire"/>
+        <label for="hire">Yes</label>
+        <input type="radio" name="hire" value="no" id="not-hire"/>
+        <label for="not-hire">No</label>
+      </p>
+      <p>
+        <label for="cmt"><b>Comments</b></label>
+        <textarea id="cmt" rows="4"></textarea>
+      </p>
+      <p style="text-align:center">
+        <input type="SUBMIT" value="Submit" />
+      </p>
+    </form>
+  </body>
+</html>
