@@ -67,7 +67,7 @@ INSERT INTO Phong VALUES ('s11','Salle 11',2,'130.120.81');
 INSERT INTO Phong VALUES ('s12','Salle 12',1,'130.120.81');
 INSERT INTO Phong VALUES ('s21','Salle 21',2,'130.120.82');
 INSERT INTO Phong VALUES ('s22','Salle 22',0,'130.120.82');
-INSERT INTO Phong VALUES ('s23','Salle 23',0,'130.120.82'); /*130.120.80 khong ton tai*/
+INSERT INTO Phong VALUES ('s23','Salle 23',0,'130.120.82'); -- 130.120.80 khong ton tai
 
 INSERT INTO Loai VALUES ('TX','Terminal X-Window');
 INSERT INTO Loai VALUES ('UNIX','Systeme Unix');
@@ -97,7 +97,19 @@ INSERT INTO Phanmem VALUES ('log4','Front Page','1997-06-03','5','PCWS',500);
 INSERT INTO Phanmem VALUES ('log5','WinDev','1997-05-12','5','PCWS',750);
 INSERT INTO Phanmem VALUES ('log6','SQL*Net','','2.0','UNIX',500);
 INSERT INTO Phanmem VALUES ('log7','I. I. S.','2002-04-12','2','PCNT',810);
-INSERT INTO Phanmem VALUES ('log8','DreamWeaver','2003-09-21','2.0','PCWS',1400); /*BeOS khong ton tai*/
+INSERT INTO Phanmem VALUES ('log8','DreamWeaver','2003-09-21','2.0','PCWS',1400); -- BeOS khong ton tai
+
+INSERT INTO Caidat VALUES ('1','p2','log1','2003-05-15');
+INSERT INTO Caidat VALUES ('2','p2','log2','2003-09-17');
+INSERT INTO Caidat VALUES ('3','p4','log5','');
+INSERT INTO Caidat VALUES ('4','p6','log6','2003-05-20');
+INSERT INTO Caidat VALUES ('5','p6','log1','2003-05-20');
+INSERT INTO Caidat VALUES ('6','p8','log2','2003-05-19');
+INSERT INTO Caidat VALUES ('7','p8','log6','2003-05-20');
+INSERT INTO Caidat VALUES ('8','p11','log3','2003-04-20');
+INSERT INTO Caidat VALUES ('9','p12','log4','2003-04-20');
+INSERT INTO Caidat VALUES ('10','p11','log7','2003-04-20');
+INSERT INTO Caidat VALUES ('11','p7','log7','2002-04-01');
 
 UPDATE Khuvuc
 SET
@@ -182,13 +194,13 @@ INSERT INTO PhanmemUnix (
     
 ALTER TABLE PhanmemUnix DROP COLUMN version;
 
-DELETE FROM Phanmem WHERE gia > 5000; /*Xoa hang thu 2*/
+DELETE FROM Phanmem WHERE gia > 5000; -- Khong xoa duoc, co mau tin con
 
-DELETE FROM PhanmemUnix WHERE gia > 5000; /*Xoa hang thu 2*/
+DELETE FROM PhanmemUnix WHERE gia > 5000; -- Xoa hang thu 2
 
-DROP TABLE Phanmem; /*Khong the xoa vi khoa chinh duoc tham chieu boi khoa ngoai trong bang Caidat*/
+DROP TABLE Phanmem; -- Khong the xoa vi khoa chinh duoc tham chieu boi khoa ngoai trong bang Caidat
 
-DROP TABLE PhanmemUnix; /*Xoa binh thuong vi khong co bang nao tham chieu den no*/
+DROP TABLE PhanmemUnix; -- Xoa binh thuong vi khong co bang nao tham chieu den no
 
 ALTER TABLE may DROP COLUMN nbLog;
 
