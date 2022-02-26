@@ -1,3 +1,4 @@
+-- Cau 1
 CREATE TABLE Khuvuc (
     IP          CHAR(10) PRIMARY KEY,
     tenKhuvuc   VARCHAR(30) NOT NULL,
@@ -56,6 +57,7 @@ CREATE TABLE Caidat (
         REFERENCES Phanmem ( idPM )
 )
 
+-- Cau 2
 INSERT INTO Khuvuc (IP, tenKhuvuc) VALUES ('130.120.80','Brin RDC');
 INSERT INTO Khuvuc VALUES ('130.120.81','Brin tang 1','');
 INSERT INTO Khuvuc VALUES ('130.120.82','Brin tang 2','');
@@ -111,6 +113,7 @@ INSERT INTO Caidat VALUES ('9','p12','log4','2003-04-20');
 INSERT INTO Caidat VALUES ('10','p11','log7','2003-04-20');
 INSERT INTO Caidat VALUES ('11','p7','log7','2002-04-01');
 
+-- Cau 3
 UPDATE Khuvuc
 SET
     tang =
@@ -120,15 +123,15 @@ SET
             WHEN IP = '130.120.82' THEN 2
         END;
 
+-- Cau 4
 UPDATE Phanmem
 SET
     gia = gia * 0.9
 WHERE idloai = 'PCNT';
 
+-- Cau 5
 ALTER TABLE May ADD nbLog SMALLINT;
-
 ALTER TABLE Phanmem ADD nbInstall SMALLINT;
-
 UPDATE Phanmem
 SET
     nbInstall =
@@ -140,8 +143,7 @@ SET
             WHEN idPM = 'log5' THEN 1
             WHEN idPM = 'log6' THEN 2
             WHEN idPM = 'log7' THEN 2            
-        END;
-        
+        END;      
 UPDATE May
 SET
     nbLog =
@@ -160,6 +162,7 @@ SET
             WHEN idMay = 'p12' THEN 1
         END;
 
+-- Cau 6
 CREATE TABLE PhanmemUNIX (
     idPM    VARCHAR(6) NOT NULL,
     tenPM   VARCHAR(30) NOT NULL,
@@ -167,16 +170,19 @@ CREATE TABLE PhanmemUNIX (
     version VARCHAR(3)
 );
 
+-- Cau 7
 ALTER TABLE PhanmemUnix ADD PRIMARY KEY ( idPM );
 
+-- Cau 8
 ALTER TABLE PhanmemUnix ADD gia INT CHECK ( gia > 0 );
 
+-- Cau 9, 10
 ALTER TABLE PhanmemUnix MODIFY (
     version VARCHAR(15),
     tenPM unique
 );
 
-
+-- Cau 11
 INSERT INTO PhanmemUnix (
     idPM,
     tenPM,
@@ -191,17 +197,22 @@ INSERT INTO PhanmemUnix (
            gia
     FROM Phanmem
     WHERE idloai = 'UNIX';
-    
+
+-- Cau 12
 ALTER TABLE PhanmemUnix DROP COLUMN version;
 
+-- Cau 13
 DELETE FROM Phanmem WHERE gia > 5000; -- Khong xoa duoc, co mau tin con
 
+-- Cau 14
 DELETE FROM PhanmemUnix WHERE gia > 5000; -- Xoa hang thu 2
 
+-- Cau 15
 DROP TABLE Phanmem; -- Khong the xoa vi khoa chinh duoc tham chieu boi khoa ngoai trong bang Caidat
 
+-- Cau 16
 DROP TABLE PhanmemUnix; -- Xoa binh thuong vi khong co bang nao tham chieu den no
 
+-- Cau 17
 ALTER TABLE may DROP COLUMN nbLog;
-
 ALTER TABLE Phanmem DROP COLUMN nbInstall;
