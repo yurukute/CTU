@@ -113,7 +113,7 @@ INSERT INTO Caidat VALUES ('9','p12','log4','2003-04-20');
 INSERT INTO Caidat VALUES ('10','p11','log7','2003-04-20');
 INSERT INTO Caidat VALUES ('11','p7','log7','2002-04-01');
 
--- Cau 3
+-- Cau 3: Sửa đổi cột tang của bảng Khuvuc để có số tầng đúng. Nghĩa là 0 cho 130.120.80, 1 cho130.120.81, 2 cho 130.120.82.
 UPDATE Khuvuc
 SET
     tang =
@@ -123,7 +123,7 @@ SET
             WHEN IP = '130.120.82' THEN 2
         END;
 
--- Cau 4
+-- Cau 4: Giảm 10% giá của các phần mềm kiểu 'PCNT'.
 UPDATE Phanmem
 SET
     gia = gia * 0.9
@@ -162,7 +162,7 @@ SET
             WHEN idMay = 'p12' THEN 1
         END;
 
--- Cau 6
+-- Cau 6: Tạo bảng PhanmemUNIX(idPM,  tenPM, ngaymua, version) có cấu kiểu dữ liệu tương tự nhưbảng Phanmem đã tạo.
 CREATE TABLE PhanmemUNIX (
     idPM    VARCHAR(6) NOT NULL,
     tenPM   VARCHAR(30) NOT NULL,
@@ -170,19 +170,20 @@ CREATE TABLE PhanmemUNIX (
     version VARCHAR(3)
 );
 
--- Cau 7
+-- Cau 7: Thêm Khóa chính idPM  cho bảng  PhanmemUNIX vừa tạo
 ALTER TABLE PhanmemUnix ADD PRIMARY KEY ( idPM );
 
--- Cau 8
+-- Cau 8: Thêm cột giá cho bảng vừa tạo
 ALTER TABLE PhanmemUnix ADD gia INT CHECK ( gia > 0 );
 
--- Cau 9, 10
+-- Cau 9:  Thay đổi kiểu cho cột version thành VARCHAR (15) cho bảng  PhanmemUNIX vừa tạo
+-- Cau 10: Thêm ràng buộc duy nhất cho cột tên phần mềm cho bảng  PhanmemUNIX vừa tạo
 ALTER TABLE PhanmemUnix MODIFY (
     version VARCHAR(15),
     tenPM unique
 );
 
--- Cau 11
+-- Cau 11: Thêm dữ liệu cho bảng  PhanmemUNIX bằng cách lấy dữ liệu từ bảng Phanmem
 INSERT INTO PhanmemUnix (
     idPM,
     tenPM,
@@ -198,21 +199,21 @@ INSERT INTO PhanmemUnix (
     FROM Phanmem
     WHERE idloai = 'UNIX';
 
--- Cau 12
+-- Cau 12: Xóa cột version khỏi bảng PhanmemUNIX
 ALTER TABLE PhanmemUnix DROP COLUMN version;
 
--- Cau 13
+-- Cau 13: Xóa các phần mềm trong bảng phần mềm có giá lớn hơn 5000 ? Giải thích kết quả
 DELETE FROM Phanmem WHERE gia > 5000; -- Khong xoa duoc, co mau tin con
 
--- Cau 14
+-- Cau 14: Xóa các phần mềm trong bảng phanmemUNIX có giá lớn hơn 5000 ? Giải thích kết quả
 DELETE FROM PhanmemUnix WHERE gia > 5000; -- Xoa hang thu 2
 
--- Cau 15
+-- Cau 15: Xóa bảng Phanmem ? Giải thích kết quả
 DROP TABLE Phanmem; -- Khong the xoa vi khoa chinh duoc tham chieu boi khoa ngoai trong bang Caidat
 
--- Cau 16
+-- Cau 16: Xóa bảng PhanmemUNIX ? Giải thích kết quả
 DROP TABLE PhanmemUnix; -- Xoa binh thuong vi khong co bang nao tham chieu den no
 
--- Cau 17
+-- Cau 17: Xóa các cột nbLog và nbInstall
 ALTER TABLE may DROP COLUMN nbLog;
 ALTER TABLE Phanmem DROP COLUMN nbInstall;
