@@ -1,15 +1,15 @@
--- Cau 1: Các tác phẩm (NT, tựa)  của tác giả  'Guy de Maupassant'. 
+-- Câu 1: Các tác phẩm (NT, tựa)  của tác giả  'Guy de Maupassant'. 
 SELECT NT,
        tua
 FROM TACPHAM
 WHERE tacgia = 'Guy de Maupassant';
 
--- Cau 2: Các độc giả sống ở địa chỉ  '32 rue des Alouettes, 75003 Paris'. 
+-- Câu 2: Các độc giả sống ở địa chỉ  '32 rue des Alouettes, 75003 Paris'. 
 SELECT *
 FROM DOCGIA
 WHERE dchi = '32 rue des Alouettes, 75003 Paris';
 
--- Cau 3: Tìm tên nhà xuất bản các tác phẩm bao gồm từ 'Fleur'
+-- Câu 3: Tìm tên nhà xuất bản các tác phẩm bao gồm từ 'Fleur'
 SELECT nxb
 FROM SACH
 WHERE NT IN (
@@ -18,12 +18,12 @@ WHERE NT IN (
     WHERE tua LIKE '%Fleur%'
 );
 
--- Cau 4: Tìm tên các tác phẩm bắt đầu bằng 'Le'
+-- Câu 4: Tìm tên các tác phẩm bắt đầu bằng 'Le'
 SELECT tua
 FROM TACPHAM
 WHERE tua LIKE 'Le%';
 
--- Cau 5: Tìm tên các độc giả có mượn sách trong trong khoảng thời gian từ ngày 15/9/2007 đến20/09/2007
+-- Câu 5: Tìm tên các độc giả có mượn sách trong trong khoảng thời gian từ ngày 15/9/2007 đến20/09/2007
 SELECT ten
 FROM DOCGIA
 WHERE ND IN (
@@ -32,20 +32,20 @@ WHERE ND IN (
     WHERE ngaymuon BETWEEN TO_DATE ('15/09/2007', 'DD/MM/YYYY') AND TO_DATE ('20/09/2007', 'DD/MM/YYYY')
 );
 
--- Cau 6: Số tác phẩm có trong thư viện. 
+-- Câu 6: Số tác phẩm có trong thư viện. 
 SELECT COUNT (*)
 FROM (
     SELECT DISTINCT NT
     FROM SACH
 );
 
--- Cau 7: Tính Số tác phẩm của mỗi tác giả. 
+-- Câu 7: Tính Số tác phẩm của mỗi tác giả. 
 SELECT tacgia,
        COUNT (nt) AS so_tacpham
 FROM TACPHAM
 GROUP BY tacgia;
 
--- Cau 8: Tính Số tác giả có ít nhất hai tác phẩm
+-- Câu 8: Tính Số tác giả có ít nhất hai tác phẩm
 SELECT COUNT (*)
 FROM (
     SELECT tacgia,
@@ -55,14 +55,14 @@ FROM (
     HAVING COUNT (*) >= 2
 );
 
--- Cau 9: Tính Số sách của mỗi tác phẩm. 
+-- Câu 9: Tính Số sách của mỗi tác phẩm. 
 SELECT tua,
        COUNT (NS) AS so_sach
 FROM SACH
 JOIN TACPHAM ON SACH.NT = TACPHAM.NT
 GROUP BY tua;
 
--- Cau 10: Tìm tên tác phẩm có nhiều sách nhất
+-- Câu 10: Tìm tên tác phẩm có nhiều sách nhất
 SELECT tua,
        so_sach
 FROM (
@@ -83,7 +83,7 @@ WHERE so_sach = (
     )
 );
 
--- Cau 11: Tên nhà xuất bản xuất bản nhiều sách nhất
+-- Câu 11: Tên nhà xuất bản xuất bản nhiều sách nhất
 SELECT nxb,
        so_sach
 FROM (
@@ -102,7 +102,7 @@ WHERE so_sach = (
     )
 );
 
--- Cau 12: Nhà xuất bản của tác phẩm  tiêu đề 'Germinal'.
+-- Câu 12: Nhà xuất bản của tác phẩm  tiêu đề 'Germinal'.
 SELECT DISTINCT nxb
 FROM SACH
 WHERE NS = (
@@ -111,7 +111,7 @@ WHERE NS = (
     WHERE tua = 'Germinal '
 );
 
--- Cau 13: Tựa của tác phẩm mà có ít nhất hai quyển sách. 
+-- Câu 13: Tựa của tác phẩm mà có ít nhất hai quyển sách. 
 SELECT tua,
        COUNT (NS) so_sach
 FROM SACH
@@ -119,7 +119,7 @@ JOIN TACPHAM ON SACH.NT = TACPHAM.NT
 GROUP BY tua
 HAVING COUNT (NS) >= 2;
 
--- Cau 14: Tên độc giả đã mượn tác phẩm 'Poésie'.
+-- Câu 14: Tên độc giả đã mượn tác phẩm 'Poésie'.
 SELECT ten
 FROM DOCGIA
 JOIN MUON ON DOCGIA.ND = MUON.ND
@@ -127,7 +127,7 @@ JOIN SACH ON SACH.NS = MUON.NS
 JOIN TACPHAM ON TACPHAM.NT = SACH.NT
 WHERE tua = 'Poésie';
 
--- Cau 15: Những độc giả nào đã mượn tác phẩm Les 'Fleurs du mal'
+-- Câu 15: Những độc giả nào đã mượn tác phẩm Les 'Fleurs du mal'
 SELECT ten
 FROM DOCGIA
 JOIN MUON ON DOCGIA.ND = MUON.ND
@@ -135,7 +135,7 @@ JOIN SACH ON SACH.NS = MUON.NS
 JOIN TACPHAM ON TACPHAM.NT = SACH.NT
 WHERE tua = 'Les Fleurs du mal';
 
--- Cau 16: Tìm số lần mượn sách của mỗi độc giả theo năm
+-- Câu 16: Tìm số lần mượn sách của mỗi độc giả theo năm
 SELECT to_char (ngaymuon, 'YYYY') nam,
        ten,
        COUNT (*)
@@ -144,7 +144,7 @@ JOIN DOCGIA ON MUON.ND = DOCGIA.ND
 GROUP BY ten,
          to_char (ngaymuon, 'YYYY');
  
--- Cau 17: Tìm tựa sách, tên độc giả của các độc giả chưa trả sách
+-- Câu 17: Tìm tựa sách, tên độc giả của các độc giả chưa trả sách
 SELECT tua tua_sach,
        ten ten_doc_gia
 FROM TACPHAM
@@ -153,7 +153,7 @@ JOIN MUON ON MUON.NS = SACH.NS
 JOIN DOCGIA ON DOCGIA.ND = MUON.ND
 WHERE ngaytra IS NULL;
 
--- Cau 18: Tìm các tựa sách, tên độc giả của các độc giả trả sách quá thời hạn cho phép
+-- Câu 18: Tìm các tựa sách, tên độc giả của các độc giả trả sách quá thời hạn cho phép
 SELECT tua tua_sach,
        ten ten_doc_gia
 FROM TACPHAM
@@ -162,7 +162,7 @@ JOIN MUON ON MUON.NS = SACH.NS
 JOIN DOCGIA ON DOCGIA.ND = MUON.ND
 WHERE ngaytra > hantra;
 
--- Cau 19: Tìm các tựa sách, tên độc giả của các độc giả trả sách trước thời hạn20)
+-- Câu 19: Tìm các tựa sách, tên độc giả của các độc giả trả sách trước thời hạn20)
 SELECT tua tua_sach,
        ten ten_doc_gia
 FROM TACPHAM
@@ -171,7 +171,7 @@ JOIN MUON ON MUON.NS = SACH.NS
 JOIN DOCGIA ON DOCGIA.ND = MUON.ND
 WHERE ngaytra < hantra;
 
--- Cau 20: Tìm tựa tác phẩm có nhiều người mượn nhất
+-- Câu 20: Tìm tựa tác phẩm có nhiều người mượn nhất
 SELECT tua_sach,
        so_lan_muon
 FROM (
@@ -194,7 +194,7 @@ WHERE so_lan_muon = (
     )
 );
 
--- Cau 21: Tìm tựa tác phẩm có ít người mượn nhất
+-- Câu 21: Tìm tựa tác phẩm có ít người mượn nhất
 SELECT tua_sach
 FROM (
     SELECT tua       tua_sach,
@@ -216,7 +216,7 @@ WHERE so_lan_muon = (
     )
 );
 
--- Cau 22: Tìm độc giả mượn nhiều tác phẩm nhất
+-- Câu 22: Tìm độc giả mượn nhiều tác phẩm nhất
 SELECT ten
 FROM (
     SELECT ten,
@@ -248,7 +248,7 @@ WHERE so_tac_pham_muon = (
     )
 );
 
--- Cau 23: Tìm tên tên độc giả mượn ít tác phẩm nhất
+-- Câu 23: Tìm tên tên độc giả mượn ít tác phẩm nhất
 SELECT ten
 FROM (
     SELECT ten,
@@ -280,7 +280,7 @@ WHERE so_tac_pham_muon = (
     )
 );
 
--- Cau 24: Tên độc giả đã mượn tác phẩm của 'Victor Hugo'
+-- Câu 24: Tên độc giả đã mượn tác phẩm của 'Victor Hugo'
 SELECT DISTINCT ten
 FROM DOCGIA
 JOIN MUON ON MUON.ND = DOCGIA.ND
@@ -288,7 +288,7 @@ JOIN SACH ON SACH.NS = MUON.NS
 JOIN TACPHAM ON TACPHAM.NT = SACH.NT
 WHERE tacgia = 'Victor Hugo';
 
--- Cau 25: Tên độc giả và các tác phẩm đã được mượn năm 2007
+-- Câu 25: Tên độc giả và các tác phẩm đã được mượn năm 2007
 SELECT ten,
        tua
 FROM MUON
@@ -297,7 +297,7 @@ JOIN SACH ON SACH.NS = MUON.NS
 JOIN TACPHAM ON TACPHAM.NT = SACH.NT
 WHERE to_char (ngaymuon, 'YYYY') = 2007;
 
--- Cau 26: Tìm tên tác phẩm có ít nhất một quyển sách không ai mượn
+-- Câu 26: Tìm tên tác phẩm có ít nhất một quyển sách không ai mượn
 SELECT DISTINCT tua
 FROM TACPHAM
 JOIN SACH ON SACH.NT = TACPHAM.NT
@@ -309,7 +309,7 @@ WHERE NS IN (
     FROM MUON
 );
 
--- Cau 27: Tìm tên tác phẩm có tất cả các quyển sách đều được mượn
+-- Câu 27: Tìm tên tác phẩm có tất cả các quyển sách đều được mượn
 SELECT tua
 FROM TACPHAM
 EXCEPT
@@ -319,7 +319,7 @@ LEFT JOIN SACH ON TACPHAM.NT = SACH.NT
 LEFT JOIN MUON ON SACH.NS = MUON.NS
 WHERE MUON.NS IS NULL;
 
--- Cau 28: Tìm họ tên độc giả chưa mượn quyển sách nào
+-- Câu 28: Tìm họ tên độc giả chưa mượn quyển sách nào
 SELECT ho,
        ten
 FROM DOCGIA
@@ -331,7 +331,7 @@ WHERE ND IN (
     FROM MUON
 );
 
--- Cau 29: Tìm thông tin về nhà suất bản của quyển sách mà chưa được ai mượn
+-- Câu 29: Tìm thông tin về nhà suất bản của quyển sách mà chưa được ai mượn
 SELECT nxb
 FROM SACH
 WHERE NS IN (
@@ -342,7 +342,7 @@ WHERE NS IN (
     FROM MUON
 );
 
--- Cau 30: Tìm tên tác phẩm có ít nhất 3 sách
+-- Câu 30: Tìm tên tác phẩm có ít nhất 3 sách
 SELECT tua,
        COUNT (*)
 FROM TACPHAM
@@ -350,7 +350,7 @@ JOIN SACH ON TACPHAM.NT = SACH.NT
 GROUP BY tua
 HAVING COUNT (*) >= 3;
 
--- Cau 31: Tìm thông tin về độc giả có mượn tất cả các quyển sách của tác phẩm 'Madame Bovary'
+-- Câu 31: Tìm thông tin về độc giả có mượn tất cả các quyển sách của tác phẩm 'Madame Bovary'
 SELECT *
 FROM DOCGIA
 WHERE ND = ALL (
@@ -364,7 +364,7 @@ WHERE ND = ALL (
     )
 );
 
--- Cau 32: Tìm thông tin về độc giả có mượn các quyển sách giống như độc giả 'Raymond Carole' 
+-- Câu 32: Tìm thông tin về độc giả có mượn các quyển sách giống như độc giả 'Raymond Carole' 
 SELECT *
 FROM DOCGIA
 WHERE ND IN (
