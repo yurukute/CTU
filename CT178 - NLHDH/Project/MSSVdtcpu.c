@@ -2,39 +2,20 @@
 
 #define MAX_N 1000
 #define INF 9999;
+#define BY_ARRIVAL_TIME 1
+#define BY_BURST_TIME   2
+#define BY_ID 3
 
 typedef struct {
     int id, x, y, wt, tat;
 } process;
 
-void sort_by_atime(int n, process p[]){
+void sort(int n, process p[], int option){
     for(int i = 0; i < n; i++){
         for(int j = i+1; j < n; j++){
-            if(p[i].x > p[j].x){
-                process temp = p[i];
-                p[i] = p[j];
-                p[j] = temp;
-            }       
-        }
-    }
-}
-
-void sort_by_btime(int n, process p[]){
-    for(int i = 0; i < n; i++){
-        for(int j = i+1; j < n; j++){
-            if(p[i].y > p[j].y){
-                process temp = p[i];
-                p[i] = p[j];
-                p[j] = temp;
-            }       
-        }
-    }
-}
-
-void sort_by_id(int n, process p[]){
-    for(int i = 0; i < n; i++){
-        for(int j = i+1; j < n; j++){
-            if(p[i].id > p[j].id){
+            if((option == BY_ARRIVAL_TIME && p[i].x > p[j].x) ||
+               (option == BY_BURST_TIME && p[i].y > p[j].y) ||
+               (option == BY_ID && p[i].id > p[j].id)){
                 process temp = p[i];
                 p[i] = p[j];
                 p[j] = temp;
@@ -46,7 +27,7 @@ void sort_by_id(int n, process p[]){
 void FCFS(int n, process p[]){
     printf("************************************************\n");  
     printf("Dinh thoi FCFS\n");
-    sort_by_atime(n, p); // sap xep theo tgian den
+    sort(n, p, BY_ARRIVAL_TIME); // sap xep theo tgian den
     p[0].wt = p[0].x;
     p[0].tat = p[0].y;
     float W = p[0].wt, R = W, T = p[0].tat;
@@ -59,7 +40,7 @@ void FCFS(int n, process p[]){
         W = R = W + p[i].wt - p[i].x;
         T += p[i].tat - p[i].x;
     }
-    sort_by_id(n, p);
+    sort(n, p, BY_ID);
     for(int i = 0; i < n; i++){
         for(int j = 0; j < p[i].x; j++)
             printf("-");
@@ -77,7 +58,7 @@ void FCFS(int n, process p[]){
 void SJF(int n, process p[]){
     printf("************************************************\n");  
     printf("Dinh thoi SJF khong trung dung\n");
-    sort_by_btime(n, p); // sap xep theo tgian chiem dung cpu
+    sort(n, p, BY_BURST_TIME); // sap xep theo tgian chiem dung cpu
     p[0].wt = p[0].x;
     p[0].tat = p[0].y;
     float W = p[0].wt, R = W, T = p[0].tat;
@@ -90,7 +71,7 @@ void SJF(int n, process p[]){
         W = R = W + p[i].wt - p[i].x;
         T += p[i].tat - p[i].x;
     }
-    sort_by_id(n, p);
+    sort(n, p, BY_ID);
     for(int i = 0; i < n; i++){
         for(int j = 0; j < p[i].x; j++)
             printf("-");
@@ -108,7 +89,7 @@ void SJF(int n, process p[]){
 void SRTF(int n, process p[]){
     printf("************************************************\n");  
     printf("Dinh thoi SJF trung dung\n");
-    sort_by_atime(n, p);
+    sort(n, p, BY_ARRIVAL_TIME);
     float W = 0, R = 0, T = 0;
     int r_time[MAX_N+1], ganttc[MAX_N], k = 0;
     r_time[n] = INF;
@@ -134,7 +115,7 @@ void SRTF(int n, process p[]){
     for(int i = 0; i < k; i++)
         printf("%d", ganttc[i]);
     printf("\n");
-    sort_by_id(n, p);
+    sort(n, p, BY_ID);
     for(int i = 0; i < n; i++){
         for(int j = 0; j < p[i].x; j++)
             printf("-");
@@ -162,7 +143,7 @@ void RR(int n, process p[], int q){
         printf("Loi: quantum = 0!");
         return;
     }
-    sort_by_atime(n, p);
+    sort(n, p, BY_ARRIVAL_TIME);
     int r_time[MAX_N], ganttc[MAX_N], k = 0;
     for(int i = 0; i < n; i++){
         r_time[i] = p[i].y; // remain time: tgian con lai cua tien trinh
@@ -194,7 +175,7 @@ void RR(int n, process p[], int q){
         else if(p[i].x <= time)
             i++;
     }
-    sort_by_id(n, p);
+    sort(n, p, BY_ID);
     for(int i = 0; i < n; i++){
         for(int j = 0; j < p[i].x; j++)
             printf("-");
