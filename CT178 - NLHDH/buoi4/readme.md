@@ -3,9 +3,9 @@
 
 ### Bài 7
 Tạo một shell script có tên `uncount` hiển thị dãy chữ số :
-
+```
 6         5         4         3         2         1
-
+```
 trong các khoãng thời gian 5 giây (hiển thị một số/5giây), mà nếu ta gõ phím `DEL` thì nó sẽ hiển thị chữ số kế tiếp 
 
 ### Bài 11
