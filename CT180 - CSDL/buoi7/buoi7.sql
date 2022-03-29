@@ -1,4 +1,5 @@
--- Câu 1: Các tác phẩm (NT, tựa)  của tác giả  'Guy de Maupassant'. 
+-- Câu 1: Các tác phẩm (NT, tựa)  của tác giả  'Guy de Maupassant'.
+-- TACPHAM(tacgia = 'Guy de Maupassant')[NT, tua]
 SELECT NT,
        tua
 FROM TACPHAM
