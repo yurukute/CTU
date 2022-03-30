@@ -201,6 +201,7 @@ WHERE kinhphi = (
 );
 
 -- Câu 21: Tên bộ phim đã trả thu lao cao nhất cho một diễn viên nào đó
+-- FILM*DIENVIEN(idCN = DIENVIEN(thulao = DIENVIEN[max(thulao)])[idCN])[tua]
 SELECT tua
 FROM FILM
 JOIN DIENVIEN ON FILM.idFILM = DIENVIEN.idfilm
@@ -214,6 +215,7 @@ WHERE idCN = (
 );
 
 -- Câu 22: Tên phim, kinh phí thực hiện và tổng thù lao đã trả cho các diễn viên của mỗi phim
+-- tua,kinhphi_G_sum(thulao) (FILM*DIENVIEN)
 SELECT tua,
        kinhphi,
        SUM (thulao) AS tong_thu_lao
@@ -223,6 +225,7 @@ GROUP BY tua,
          kinhphi;
          
 -- Câu 23: Họ tên, số lần tham gia và tổng thù lao đã nhận của mỗi diên viên có tổng thù lao lớn hơn 800.000
+-- ho,ten_G_count(*),sum(thulao)>800000 (DIENVIEN*CANHAN)
 SELECT ho,
        ten,
        COUNT (*) so_lan_tgia,
@@ -241,6 +244,7 @@ JOIN LOAIPHIM ON LOAI.idLoai = LOAIPHIM.idLoai
 JOIN FILM ON LOAIPHIM.idfilm = FILM.idfilm group by tenloai having avg(kinhphi) > 500000000;
 
 -- Câu 25: Cho mỗi phim mà 'BALIN MIREILLE' đã tham gia đóng phim, hãy cho biết tổng thù lao đã trả cho các diễn viên
+-- tua_G_sum(thulao)=CANHAN(ho = 'BALIN' ^ ten = 'MIREILLE')[idCN] (FILM*DIENVIEN)
 SELECT tua,
        SUM (thulao) AS tong_thu_lao
 FROM FILM
@@ -252,7 +256,10 @@ WHERE idCN = (
 )
 GROUP BY tua;
 
--- Câu 26: Tìm họ tên các diễn viên, họ tên người thực hiện của bộ phim 'RESULTADO FINAL' 
+-- Câu 26: Tìm họ tên các diễn viên, họ tên người thực hiện của bộ phim 'RESULTADO FINAL'
+-- R = CANHAN(idCN = FILM*DIENVIEN(tua = 'RESULTADO FINAL')[idCN])[ho,ten]
+-- S = CANHAN(idCN = FILM(tua = 'RESULTADO FINAL')[nguoithuchien])[ho,ten]
+-- kq = R ∪ S
 SELECT ho,
        ten
 FROM CANHAN
@@ -316,16 +323,18 @@ FROM (
 );
 
 -- Câu 31: Tính số cá nhân vừa đóng phim vừa thực hiện phim
+-- (DIENVIEN[idCN] ∩ FILM[nguoithuchien])[count(*)]
 SELECT COUNT (*)
 FROM (
     SELECT DISTINCT idCN
     FROM DIENVIEN
     INTERSECT
     SELECT nguoithuchien
-    FROM film
+    FROM FILM
 );
 
 -- Câu 32: Tính số cá nhân chỉ đóng phim
+-- (DIENVIEN[idCN] \ FILM[nguoithuchien])[count(*)]
 SELECT COUNT (*)
 FROM (
     SELECT idCN
@@ -336,6 +345,7 @@ FROM (
 );
 
 -- Câu 33: Tính số cá nhân chỉ thực hiện phim
+-- (FILM[nguoithuchien] \ DIENVIEN[idCN])[count(*)]
 SELECT COUNT (*)
 FROM (
     SELECT nguoithuchien
@@ -346,6 +356,7 @@ FROM (
 );
 
 -- Câu 34: Tính số cá nhân không đóng phim cũng không thực hiện phim
+-- (CANHAN[idCN] \ (DIENVIEN[idCN] ∪ FILM[nguoithuchien]))[count(*)]
 SELECT COUNT (*)
 FROM (
     SELECT idCN
@@ -355,7 +366,7 @@ FROM (
     FROM DIENVIEN
     EXCEPT
     SELECT nguoithuchien
-    FROM film
+    FROM FILM
 );
 
 -- Câu 35: Những diễn viên nào đã tham gia ít nhất là một phim giống như diễn viên 'LANCASTER BURT'
@@ -394,7 +405,6 @@ HAVING COUNT (*) = (
 );
 
 -- Câu 37: Ai đã tham gia tất cả các phim do 'BIVEL' thực hiện
--- 
 SELECT ho,
        ten
 FROM CANHAN
