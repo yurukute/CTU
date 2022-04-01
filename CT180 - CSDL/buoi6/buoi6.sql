@@ -1,17 +1,14 @@
 -- Câu 1: Loại của máy 'p8'
--- May(idMay = 'p8')[idloai]
 SELECT idloai
 FROM May
 WHERE idMay = 'p8';
 
 -- Câu 2: Tên của các phần mềm 'UNIX'
--- Phanmem(idloai = 'UNIX')[tenPM]
 SELECT tenPM
 FROM Phanmem
 WHERE idloai = 'UNIX';
 
 -- Câu 3: Tên phòng, địa chỉ IP phòng, mã phòng của các máy loại 'UNIX' hoặc 'PCWS'
--- Phong*May(idloai = 'UNIX' || idloai = 'PCWS')[tenphong, ip, mp]
 SELECT tenphong,
        P.IP,
        P.MP
@@ -20,7 +17,6 @@ FROM Phong P,
 WHERE P.IP = M.IP AND (M.idloai = 'UNIX' OR M.idloai = 'PCWS');
 
 -- Câu 4: Tên phòng, địa chỉ IP phòng, mã phòng của các máy loại 'UNIX' hoặc 'PCWS' ở khuvực '130.120.80', sắp xếp kết quả tăng dần theo mã phòng
--- Phong*May((idloai = 'UNIX' || idloai = 'PCWS') ^ IP = '130.120.80')[tenphong, ip, mp]
 SELECT tenphong,
        P.IP,
        P.MP
@@ -30,58 +26,49 @@ WHERE P.IP = M.IP AND (M.idloai = 'UNIX' OR M.idloai = 'PCWS') AND P.IP = '130.1
 ORDER BY P.MP;
 
 -- Câu 5: Số các phần mềm được cài đặt trên máy 'p6'
--- Caidat(idmay = 'p6')[count(id)]
 SELECT COUNT (id) so_phanmem
 FROM Caidat
 WHERE idmay = 'p6';
 
 -- Câu 6: Số các máy đã cài phần mềm 'log1'
--- Caidat(idPM = 'log1')[count(idmay)]
 SELECT COUNT (idMay) so_may
 FROM Caidat
 WHERE idPM = 'log1';
 
 -- Câu 7: Tên và địa chỉ IP (ví dụ: 130.120.80.1) đầy đủ của các máy loại 'TX'
--- May(idloai = 'TX')[tenmay, IP]
 SELECT tenmay,
        IP
 FROM May
 WHERE idloai = 'TX';
 
 -- Câu 8: Tính số phần mềm đã cài đặt trên mỗi máy
--- idMay_G_count(*) (Caidat)
 SELECT idMay,
        COUNT (*) so_phanmem
 FROM Caidat
 GROUP BY idMay;
 
 -- Câu 9: Tính số máy mỗi phòng
--- MP_G_count(*) (May)
 SELECT MP,
        COUNT (*) so_may
 FROM May
 GROUP BY MP;
 
 -- Câu 10: Tính số cài lần cài đặt của mỗi phần mềm trên các máy khác nhau
--- idMay_G_count(*) (Caidat)
 SELECT idMay,
        COUNT (*) so_phanmem
 FROM Caidat
 GROUP BY idMay;
 
 -- Câu 11: Giá trung bình của các phần mềm UNIX
--- Phanmem(idloai = 'UNIX')[avg(gia)]
 SELECT AVG (gia) AS gia_tb
 FROM Phanmem
 WHERE idloai = 'UNIX';
 
 -- Câu 12: Ngày mua phần mềm gần nhất
--- Phanmem[max(ngaymua)]
 SELECT MAX (ngaymua) ngay_mua_gan_nhat
 FROM Phanmem;
 
 -- Câu 13: Số máy có ít nhất 2 phần mềm
--- idMay_G_count(*)>=2 (Caidat)
 SELECT idmay,
        COUNT (*) so_pm
 FROM Caidat
@@ -89,8 +76,6 @@ GROUP BY idMay
 HAVING COUNT (*) >= 2;
 
 -- Câu 14: Số máy có ít nhất 2 phần mềm, sử dụng một select con trong mệnh đề FROM
--- temp = idMay_G_count(*)>=2 (Caidat)
--- temp[count(*)]
 SELECT COUNT (*) so_may
 FROM (
     SELECT idmay,
@@ -188,7 +173,6 @@ WHERE MP IN (
 );
 
 -- Câu 22: Tên phần mềm được mua gần nhất (sử dụng câu 12)
--- Phanmem(ngaymua = Phanmem[max(ngaymua)])[tenPm]
 SELECT tenPM
 FROM phanmem
 WHERE ngaymua = (
@@ -197,21 +181,18 @@ WHERE ngaymua = (
 );
 
 -- Viết các câu từ 18) đến 21) sử dụng JOIN, đánh số cho các câu hỏi này từ 23) đến 26)
--- Câu 23: Địa chỉ IP đầy đủ của các máy cài phần mềm 'log6'
 SELECT IP
 FROM May
 JOIN Caidat ON May.idMay = Caidat.idmay
 WHERE idPM = 'log6';
 
 -- Câu 24: Địa chỉ IP đầy đủ của các máy cài phần mềm tên 'Oracle 8'
--- May*Caidat*Phanmem(tenPM = 'Oracle 8')[IP]
 SELECT IP
 FROM May JOIN Caidat  ON May.idMay   = Caidat.idmay
          JOIN Phanmem ON Caidat.idPM = Phanmem.idPM
 WHERE tenPM = 'Oracle 8';
 
 -- Câu 25: Tên của các khu vực có chính xác 3 máy loại 'TX'
--- (tenKhuvuc_G_count(*)=3 (Khuvuc*May))[tenKhuvuc] 
 SELECT tenKhuvuc
 FROM Khuvuc
 JOIN May ON May.IP = Khuvuc.IP
@@ -220,7 +201,6 @@ GROUP BY tenKhuvuc
 HAVING COUNT (*) = 3;
 
 -- Câu 26: Tên phòng có ít nhất một máy cài phần mềm tên 'Oracle 6'
--- (tenPhong_G_count(*)>1 (Phong*May*Caidat*Phanmem))[tenPhong]
 SELECT tenPhong
 FROM Phong 
     JOIN May     ON May.MP       = Phong.MP
@@ -231,7 +211,6 @@ GROUP BY tenPhong
 HAVING COUNT (*) >= 1;
 
 -- Câu 27: Tên của máy có ít nhất một phần mềm chung với máy 'p6'
--- Caidat(idMay != 'p6' ^ idPM = (Caidat(idMay) = 'p6')[idPM])[idMay]
 SELECT idMay
 FROM Caidat
 WHERE idMay != 'p6' AND idPM IN (

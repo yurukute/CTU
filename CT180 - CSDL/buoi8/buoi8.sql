@@ -1,11 +1,9 @@
 -- Câu 1: Danh sách tất cả các bộ phim có khinh phí lớn hơn 1 triệu
--- FILM(kinhphi > 1000000)[tua]
 SELECT tua
 FROM FILM
 WHERE kinhphi > 1000000;
 
 -- Câu 2: Tên Loại của bộ phim tựa 'IMPORTANCE OF BEING ERNEST'
--- LOAI*LOAIPHIM*FILM(tua = 'IMPORTANCE OF BEING ERNEST')[tenloai]
 SELECT tenloai
 FROM LOAI
 JOIN LOAIPHIM ON LOAI.idloai = LOAIPHIM.idLoai
@@ -13,7 +11,6 @@ JOIN FILM ON FILM.idFilm = LOAIPHIM.idFilm
 WHERE tua = 'IMPORTANCE OF BEING ERNEST';
 
 -- Câu 3: Tựa và kinh phí của các bộ phim thuộc thể loại 'SCIENCE FICTION' và có kinh phí lớn hơn 800,000 và nhỏ hơn 1 triệu. Sắp kết quả tăng dần theo kinh phí.
--- FILM*LOAIPHIM*LOAI(tenloai = 'SCIENCE FICTION' ^ kinhphi > 800000 ^ kinhphi < 1000000)[tua, kinhphi]
 SELECT tua,
        kinhphi
 FROM FILM
@@ -23,7 +20,6 @@ WHERE (tenloai = 'SCIENCE FICTION' AND kinhphi > 800000 AND kinhphi < 1000000)
 ORDER BY kinhphi;
 
 -- Câu 4: Tên đầy đủ (ghép họ và tên), thù lao của các diễn viên đã tham gia bộ phim 'MARK OF THE DEVIL'. Sắp kết quả giảm dần theo thù lao
--- CANHAN*DIENVIEN*FILM(tua = 'MARK OF THE DEVIL')[concat (ho, concat (' ', ten)), thulao]
 SELECT concat (ho, concat (' ', ten)) hoten,
        thulao
 FROM CANHAN
@@ -33,20 +29,17 @@ WHERE tua = 'MARK OF THE DEVIL'
 ORDER BY thulao DESC;
 
 -- Câu 5: Tên đầy đủ (ghép họ và tên) của người đã thực hiện bộ phim 'ONCE A THIEF'
--- CANHAN*DIENVIEN*FILM(tua = 'ONCE A THIEF')[concat (ho, concat (' ', ten))]
 SELECT concat (ho, concat (' ', ten)) hoten
 FROM CANHAN
 JOIN FILM ON CANHAN.idCN = FILM.nguoithuchien
 WHERE tua = 'ONCE A THIEF';
 
 -- Câu 6: Tên các bộ phim bao gồm từ 'IMPOSSIBLE'
--- FILM(tua ~= '%IMPOSSIBLE%')[tua]
 SELECT tua
 FROM FILM
 WHERE tua LIKE '%IMPOSSIBLE%';
 
 -- Câu 7: Thông tin về các bộ phim do viễn viên 'WILDE CORNEL' đóng. Sắp kết quả tăng dần theo họ và tên người thực hiện.
--- FILM*CANHAN(idfilm = DIENVIEN(idCN = CANHAN(ho = 'WILDE' ^ ten = 'CORNEL')[idCN])[idfilm])[idfilm, tua, ho, ten]
 SELECT idfilm, tua, ho ho_nguoi_thuc_hien, ten ten_nguoi_thuc_hien, kinhphi
 FROM FILM
 JOIN CANHAN ON FILM.nguoithuchien = CANHAN.idCN
@@ -61,14 +54,12 @@ WHERE idfilm IN (
 ) ORDER BY ho, ten;
 
 -- Câu 8: Tựa các bộ phim do 'WILSON HUGH'
--- FILM*CANHAN(ho = 'WILSON' ^ ten = 'HUGH')[tua]
 SELECT tua
 FROM FILM
 JOIN CANHAN ON FILM.nguoithuchien = CANHAN.idcn
 WHERE ho = 'WILSON' AND ten = 'HUGH';
 
 -- Câu 9: Họ tên cá nhân đã tham gia ít nhất 1 bộ phim do họ thực hiện
--- CANHAN(idcn = FILM*DIENVIEN(nguoithuchien = idcn)[idcn])[ho, ten]
 SELECT ho,
        ten
 FROM CANHAN
@@ -80,7 +71,6 @@ WHERE idcn IN (
 );
 
 -- Câu 10: Họ tên cá nhân đã tham gia ít nhất 10 bộ phim do họ thực hiện
--- CANHAN(idcn = FILM*DIENVIEN(nguoithuchien = idcn)[idcn])[ho, ten]
 SELECT ho,
        ten
 FROM CANHAN
@@ -94,14 +84,12 @@ WHERE idcn IN (
 );
 
 -- Câu 11: Tổng thù lao đã trả cho bộ phim 'TALE OF TWO CITIES'
--- DIENVIEN*FILM(tua = 'TALE OF TWO CITIES')[sum(thulao)]
 SELECT SUM (thulao)
 FROM DIENVIEN
 JOIN FILM ON DIENVIEN.idfilm = FILM.idfilm
 WHERE tua = 'TALE OF TWO CITIES';
 
 -- Câu 12: Số phim mỗi thể loại
--- tenloai_G_count(*) (LOAIPHIM*LOAI)
 SELECT tenloai,
        COUNT (*)
 FROM LOAIPHIM
@@ -121,7 +109,6 @@ HAVING COUNT (*) = (
 );
 
 -- Câu 14: Kinh phí trung bình của phim theo người thực hiện
--- ho, ten_G_avg(kinhphi) (FILM*CANHAN)
 SELECT ho,
        ten,
        AVG (kinhphi)
@@ -131,7 +118,6 @@ GROUP BY ho,
          ten;
 
 -- Câu 15: Họ tên người thực hiện đã thực hiện hơn 50 bộ phim
--- ho,ten_G_count(*)>50 (FILM*CANHAN)
 SELECT ho,
        ten
 FROM FILM
@@ -155,7 +141,6 @@ HAVING COUNT (*) = (
 );
 
 -- Câu 17: Họ tên diễn viên đã tham gia hơn 50 bộ phim
--- ho,ten_G_count(*)>50 (FILM*DIENVIEN*CANHAN)
 SELECT ho,
        ten
 FROM FILM
@@ -183,7 +168,6 @@ HAVING COUNT (*) = (
 );
 
 -- Câu 19: Tên bộ phim có kinh phí thực hiện cao nhất
--- FILM(kinhphi = FILM[max(kinhphi)])[tua]
 SELECT tua
 FROM FILM
 WHERE kinhphi = (
@@ -192,7 +176,6 @@ WHERE kinhphi = (
 );
 
 -- Câu 20: Tên bộ phim có kinh phí thực hiện tháp nhất
--- FILM(kinhphi = FILM[min(kinhphi)])[tua]
 SELECT tua
 FROM FILM
 WHERE kinhphi = (
@@ -201,7 +184,6 @@ WHERE kinhphi = (
 );
 
 -- Câu 21: Tên bộ phim đã trả thu lao cao nhất cho một diễn viên nào đó
--- FILM*DIENVIEN(idCN = DIENVIEN(thulao = DIENVIEN[max(thulao)])[idCN])[tua]
 SELECT tua
 FROM FILM
 JOIN DIENVIEN ON FILM.idFILM = DIENVIEN.idfilm
@@ -215,7 +197,6 @@ WHERE idCN = (
 );
 
 -- Câu 22: Tên phim, kinh phí thực hiện và tổng thù lao đã trả cho các diễn viên của mỗi phim
--- tua,kinhphi_G_sum(thulao) (FILM*DIENVIEN)
 SELECT tua,
        kinhphi,
        SUM (thulao) AS tong_thu_lao
@@ -225,7 +206,6 @@ GROUP BY tua,
          kinhphi;
          
 -- Câu 23: Họ tên, số lần tham gia và tổng thù lao đã nhận của mỗi diên viên có tổng thù lao lớn hơn 800.000
--- ho,ten_G_count(*),sum(thulao)>800000 (DIENVIEN*CANHAN)
 SELECT ho,
        ten,
        COUNT (*) so_lan_tgia,
@@ -236,7 +216,6 @@ GROUP BY ho, ten
 HAVING SUM (thulao) > 800000;
 
 -- Câu 24: Tìm tên thể loại và trung bình khinh phí của mỗi thể loại mà có trung bình kinh phí lớn hơn 500 triệu
--- tenloai_G_avg(kinhphi)>500000000 (LOAI*LOAIPHIM*FILM)
 SELECT tenloai,
        AVG (kinhphi) kinh_phi_tb
 FROM LOAI
@@ -244,7 +223,6 @@ JOIN LOAIPHIM ON LOAI.idLoai = LOAIPHIM.idLoai
 JOIN FILM ON LOAIPHIM.idfilm = FILM.idfilm group by tenloai having avg(kinhphi) > 500000000;
 
 -- Câu 25: Cho mỗi phim mà 'BALIN MIREILLE' đã tham gia đóng phim, hãy cho biết tổng thù lao đã trả cho các diễn viên
--- tua_G_sum(thulao)=CANHAN(ho = 'BALIN' ^ ten = 'MIREILLE')[idCN] (FILM*DIENVIEN)
 SELECT tua,
        SUM (thulao) AS tong_thu_lao
 FROM FILM
@@ -257,9 +235,6 @@ WHERE idCN = (
 GROUP BY tua;
 
 -- Câu 26: Tìm họ tên các diễn viên, họ tên người thực hiện của bộ phim 'RESULTADO FINAL'
--- R = CANHAN(idCN = FILM*DIENVIEN(tua = 'RESULTADO FINAL')[idCN])[ho,ten]
--- S = CANHAN(idCN = FILM(tua = 'RESULTADO FINAL')[nguoithuchien])[ho,ten]
--- kq = R ∪ S
 SELECT ho,
        ten
 FROM CANHAN
@@ -280,7 +255,6 @@ WHERE idCN = (
 );
 
 -- Câu 27: Họ tên diễn viên được trả thù lao cao nhất từ một bộ phim nào đó
--- CANHAN*DIENVIEN*FILM(thulao = DIENVIEN[max(thulao)])[ho, ten]
 SELECT ho,
        ten
 FROM CANHAN
@@ -292,7 +266,6 @@ WHERE thulao = (
 );
 
 -- Câu 28: Họ tên diễn viên có tổng thu lao thấp nhất
--- ho,ten_G_(sum(thulao) = idCN_G_min(sum(thulao)) (DIENVIEN)) (CANHAN)
 SELECT ho,
        ten
 FROM CANHAN
@@ -307,7 +280,6 @@ HAVING SUM (thulao) = (
 );
 
 -- Câu 29: Tính số cá nhân đã tham gia đóng phim
--- (DIENVIEN[idCN])[count(*)]
 SELECT COUNT (*)
 FROM (
     SELECT DISTINCT idCN
@@ -315,7 +287,6 @@ FROM (
 );
 
 -- Câu 30: Tính số cá nhân đã thực hiện phim
--- (FILM[nguoithuchien])[count(*)]
 SELECT COUNT (*)
 FROM (
     SELECT DISTINCT nguoithuchien
@@ -323,7 +294,6 @@ FROM (
 );
 
 -- Câu 31: Tính số cá nhân vừa đóng phim vừa thực hiện phim
--- (DIENVIEN[idCN] ∩ FILM[nguoithuchien])[count(*)]
 SELECT COUNT (*)
 FROM (
     SELECT DISTINCT idCN
@@ -334,7 +304,6 @@ FROM (
 );
 
 -- Câu 32: Tính số cá nhân chỉ đóng phim
--- (DIENVIEN[idCN] \ FILM[nguoithuchien])[count(*)]
 SELECT COUNT (*)
 FROM (
     SELECT idCN
@@ -345,7 +314,6 @@ FROM (
 );
 
 -- Câu 33: Tính số cá nhân chỉ thực hiện phim
--- (FILM[nguoithuchien] \ DIENVIEN[idCN])[count(*)]
 SELECT COUNT (*)
 FROM (
     SELECT nguoithuchien
@@ -356,7 +324,6 @@ FROM (
 );
 
 -- Câu 34: Tính số cá nhân không đóng phim cũng không thực hiện phim
--- (CANHAN[idCN] \ (DIENVIEN[idCN] ∪ FILM[nguoithuchien]))[count(*)]
 SELECT COUNT (*)
 FROM (
     SELECT idCN
