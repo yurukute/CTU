@@ -64,7 +64,7 @@ SELECT ho,
        ten
 FROM CANHAN
 WHERE idcn IN (
-    SELECT idcn
+    SELECT DISTINCT idcn
     FROM FILM
     JOIN DIENVIEN ON FILM.idfilm = DIENVIEN.idfilm
     WHERE nguoithuchien = idcn
@@ -377,25 +377,19 @@ SELECT ho,
 FROM CANHAN
 JOIN DIENVIEN ON CANHAN.idCN = DIENVIEN.idCN
 WHERE idfilm IN (
-    SELECT idfilm
+    SELECT DISTINCT idfilm
     FROM FILM
-    WHERE nguoithuchien = (
-        SELECT idCN
-        FROM CANHAN
-        WHERE ho = 'BIVEL'
-    )
+    JOIN CANHAN ON nguoithuchien = idCN
+    WHERE ho = 'BIVEL'
 )
 GROUP BY ho,
          ten
-HAVING COUNT (*) > (
+HAVING COUNT (*) = (
     SELECT COUNT (*)
     FROM (
         SELECT idfilm
         FROM FILM
-        WHERE nguoithuchien = (
-            SELECT idCN
-            FROM CANHAN
-            WHERE ho = 'BIVEL'
-        )
+        JOIN CANHAN ON nguoithuchien = idCN
+        WHERE ho = 'BIVEL'
     )
 );
