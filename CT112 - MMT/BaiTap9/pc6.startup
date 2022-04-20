@@ -1,0 +1,2 @@
+ifconfig eth0 10.0.0.22/24 up 
+ifconfig eth0 hw ether 00:00:00:00:77:20
