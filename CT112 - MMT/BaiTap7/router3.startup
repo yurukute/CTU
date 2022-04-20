@@ -1,0 +1,6 @@
+ifconfig eth0 192.168.0.130/27 up
+ifconfig eth1 192.168.0.162/27 up
+ifconfig eth2 192.168.0.193/27 up
+route add -net 192.168.0.32/27 gw 192.168.0.129
+route add -net 192.168.0.64/27 gw 192.168.0.129
+route add -net 192.168.0.96/27 gw 192.168.0.161
