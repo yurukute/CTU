@@ -1,0 +1,9 @@
+1000 Mot ngan dong
+2000 Hai ngan dong
+5000 Nam ngan dong
+10000 Muoi ngan dong
+20000 Hai muoi ngan dong
+50000 Nam muoi ngan dong
+100000 Mot tram ngan dong
+200000 Hai tram ngan dong
+500000 Nam tram ngan dong 
