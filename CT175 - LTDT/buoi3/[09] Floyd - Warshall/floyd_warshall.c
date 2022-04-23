@@ -20,6 +20,7 @@ void init_graph(Graph *G, int n){
 
 void add_edge(Graph *G, int u, int v, int w){
     G->A[u][v] = w;
+    G->m++;
 }
 
 void read_graph(Graph *G) {
