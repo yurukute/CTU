@@ -4,4 +4,3 @@ ifconfig eth2 192.168.0.129/27 up
 route add -net 192.168.0.96/27 gw 192.168.0.66
 route add -net 192.168.0.160/27 gw 192.168.0.66
 route add -net 192.168.0.192/27 gw 192.168.0.130
-
