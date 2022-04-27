@@ -1,0 +1,7 @@
+zebra=yes
+ripd=yes
+
+bgpd=no
+ospfd=no
+ospf6d=no
+ripngd=no

@@ -1,0 +1,2 @@
+ifconfig eth0 200.117.68.2/30 up
+route add default gw 200.117.68.1
