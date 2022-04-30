@@ -34,7 +34,7 @@ void readFile (item **a, int *n, int *m){
         i++;
     }
     *n = i;
-    *a = (*a);
+    fclose(f);
 }
 
 void printChart (item *a, int n){

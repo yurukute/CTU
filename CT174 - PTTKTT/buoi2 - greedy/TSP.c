@@ -43,6 +43,7 @@ void readFile(edge **e, int *n){
 			}
 		}	
 	}
+    fclose(f);
 }
 
 void printList(edge *e, int n){	
