@@ -1,0 +1,6 @@
+47
+15 30 5 Gao Mot bui
+10 25 1 Nep cai hoa vang
+2   2 3 Gao Nang huong
+4   6 2 Gao Tai nguyen
+8  24 2 Gao ST25
