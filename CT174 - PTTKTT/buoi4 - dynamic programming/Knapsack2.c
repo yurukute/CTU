@@ -51,7 +51,7 @@ int min(int a, int b){
 
 void createTable(item *a, int n, int m, table F, table X){
     for(int i = 0; i <= m; i++){
-        X[0][i] = (i >= a[0].w);
+        X[0][i] = min(i/a[0].w, a[0].max_qty);
         F[0][i] = X[0][i] * a[0].v;
     }
     for(int i = 1; i < n; i++){
@@ -71,31 +71,7 @@ void createTable(item *a, int n, int m, table F, table X){
 }
 
 void printTable(int n, int m, table F, table X){
-    printf("Bang quy hoach dong:\n|---");
-    for(int i = 0; i <= m; i++){
-        printf("|-------");
-    }    
-    printf("|\n|k\\V");
-    for(int i = 0; i <= m; i++){
-        printf("|   %-4d", i);
-    }
-    printf("|\n|---");
-    for(int i = 0; i <= m; i++){
-        printf("|-------");
-    }    
-    printf("|\n");
-	for(int i = 0; i < n; i++){
-        printf("| %-2d", i+1);
-		for(int j = 0; j <= m; j++){
-		 	printf("| %2d| %-2d",F[i][j], X[i][j]);
-        }
-		printf("|\n");
-	}
-    printf("|---");
-    for(int i = 0; i <= m; i++){
-        printf("|-------");
-    }    
-    printf("|\n\n");
+    
 }
 
 void searchTable(item *a, int n, int m, table X){

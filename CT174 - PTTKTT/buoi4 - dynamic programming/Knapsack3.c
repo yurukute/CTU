@@ -59,31 +59,29 @@ void createTable(item *a, int n, int m, table F, table X){
 }
 
 void printTable(int n, int m, table F, table X){
-    printf("Bang quy hoach dong:\n|---");
-    for(int i = 0; i <= m; i++){
-        printf("|-------");
-    }    
-    printf("|\n|k\\V");
-    for(int i = 0; i <= m; i++){
-        printf("|   %-4d", i);
-    }
-    printf("|\n|---");
-    for(int i = 0; i <= m; i++){
-        printf("|-------");
-    }    
-    printf("|\n");
-	for(int i = 0; i < n; i++){
-        printf("| %-2d", i+1);
-		for(int j = 0; j <= m; j++){
-		 	printf("| %2d| %-2d",F[i][j], X[i][j]);
-        }
+    printf("Bang quy hoach dong:\n");   
+	for(int i = 0; i < n+4; i++){
+		if(i == 0 || i == 2 || i == n+3){
+			printf("|---");
+    		for(int i = 0; i <= m; i++){
+        		printf("|-----");
+    		}			
+		}
+		else if(i == 1){
+			printf("|k\\V");
+    		for(int i = 0; i <= m; i++){	
+        		printf("|  %-3d", i);
+    		}    		
+		}
+		else{
+        	printf("| %-2d", i+1);
+			for(int j = 0; j <= m; j++){
+			 	printf("|%2d %2d",F[i][j], X[i][j]);
+    	    }
+		}
 		printf("|\n");
 	}
-    printf("|---");
-    for(int i = 0; i <= m; i++){
-        printf("|-------");
-    }    
-    printf("|\n\n");
+	printf("\n");
 }
 
 void searchTable(item *a, int n, int m, table X){
