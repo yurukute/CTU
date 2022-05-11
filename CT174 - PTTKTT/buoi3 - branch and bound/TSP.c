@@ -54,11 +54,9 @@ void printResult(Edge x[], int n){
 }
 
 int isCycle(Edge x[], int n, int next){
-    int i = 0;
-    while(i < n){
+    for(int i = 0; i < n; i++){
         if(next == x[i].first)
             return 1;
-        i++;
     }
     return 0;
 }
