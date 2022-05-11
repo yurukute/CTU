@@ -15,7 +15,7 @@ typedef struct {
 } Graph;
 
 void readFile(Graph *G){
-    FILE *f = fopen("../CTU/CT174 - PTTKTT/buoi3 - branch and bound/TSP1.txt", "r");
+    FILE *f = fopen("TSP1.txt", "r");
     fscanf(f,"%d", &G->n);
     for(int i = 0; i < G->n; i++){
         for(int j = 0; j < G->n; j++){
