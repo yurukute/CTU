@@ -18,13 +18,13 @@ void swap(record *a, record *b){
 }
 
 int findPivot(record a[], int i, int j){
-	int k = i+1;
-	keytype firstkey = a[i].key;	
-	while((k<=j) && (a[k].key == firstkey))
-		k++;
-	if(k > j)
-		return -1;
-	return a[k].key < firstkey ? k : i;
+	keytype firstkey = a[i].key;
+    for(int k = i+1; k <= j; k++){
+        if(a[k].key != firstkey){
+            return a[k].key < firstkey ? k : i;
+        }        
+    }
+    return -1;
 }
 
 int partition(record a[], int L, int R, keytype pivot){
