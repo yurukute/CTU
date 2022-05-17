@@ -134,7 +134,9 @@ nav > a:hover{
   background-color: #ed4190;
 }
 
-div.search-box {
+.search-box {
+  margin: 0;
+  width: unset;
   padding-top: 3px;
   display: flex;
   float: right;
@@ -147,6 +149,7 @@ div.search-box {
   text-align: center;
   background-color: #cddc39;
   cursor: pointer;
+  border: 0px;
 }
 
 .shopping-cart-icon {
@@ -170,7 +173,7 @@ h1 {
   color: #f90b6d;
   text-align: center;
   line-height: 34px;
-  font-weight: 300px;
+  font-weight: 300;
   font-family: 'Open Sans', sans-serif;
   position: relative;
 }
@@ -191,6 +194,7 @@ h2, h3 {
   color: #f90b6d;
   font-size: 24px;
   font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
   line-height: 28px;
 }
 
@@ -264,9 +268,14 @@ section.products div {
   background:linear-gradient(to top, #cddc39 0%, transparent 10%);
 }
 
+section.products div > img {
+  margin: auto;
+}
+
 section.products div > p {
   color: #000;
-  text-align: justify;  
+  text-align: justify;
+  margin-bottom: 5px;
 }
 
 section.products span {
@@ -328,4 +337,12 @@ footer > a[href="#logo"] {
   text-align: center;
   color: #ed4190;
   z-index: 100px;
+}
+
+table.bill {
+  border: 1px ridge;
+}
+
+table.bill th {
+  text-align: center;
 }
