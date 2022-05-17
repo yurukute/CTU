@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="vi-vn">
+  <head>
+    <title>Đơn hàng</title>
+    <meta charset="UTF-8">
+    <link href="images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script>window.onload = function(){ showCart(); };</script>
+  </head>
+  <body>
+    <header>
+      <a href="trangchu.html">
+        <img src="images/logo.png" id="logo">
+      </a>
+      <img id="header-img1" src="images/header-img1.png"/>
+      <img id="header-img2" src="images/header-img2.png"/>
+      <img id="header-img3" src="images/header-img3.png"/>
+      <nav>
+        <a href="trangchu.html">Trang Chủ</a>
+        <a href="gioithieu.html">Giới Thiệu</a>
+        <a href="sanpham.html">Sản Phẩm</a>
+        <a href="tintuc.html">Tin Tức</a>
+        <a href="dangnhap.html">Đăng Nhập</a>
+        <a href="dangky.html">Đăng Ký</a>
+        <a href="lienhe.html">Liên Hệ</a>
+      </nav>      
+      <form class="search-box" method="GET" id="search-form" action="timkiem.html" onsubmit="return mySearch(event);">
+        <input name="search" type="search" id="search" placeholder="Nhập nội dung cần tìm..." />
+        <button type="submit" class="search-icon"><i class="fa fa-search"></i></button>
+        &nbsp;
+        <span onclick="window.location.href='donhang.html'" class="shopping-cart-icon"><i class="fa fa-shopping-cart"></i></span>
+      </form>
+    </header>
+    <main class="one-col">
+      <h1>Chi tiết đơn hàng</h1>
+      <table border id="cartDetail">
+        <thead>
+          <tr>
+            <th>Hình SP</th>
+            <th>Tên SP</th>
+            <th>Số lượng</th>
+            <th>Giá</th>
+            <th>Thành tiền</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody></tbody>	
+		<tfoot>
+		  <tr><td colspan="6" align="right">Tổng thành tiền (A) = <span id="bill_totalpretax"></span></td></tr>
+		  <tr><td colspan="6" align="right">Chiết Khấu (B) = <span id="bill_discount"></span></td></tr>
+		  <tr><td colspan="6" align="right">Thuế (C) = 10% x (A - B) = <span id="bill_tax"></span></td></tr>
+		  <tr><td colspan="6" align="right">Tổng đơn hàng = A - B + C = <span id="bill_total"></span></td></tr>
+		  <tr><td colspan="6" align="center"><button type="submit">Xác Nhận Đơn Hàng</button></td></tr>
+      </table>
+    </main>
+    <footer>&#169; 2021 Bản quyền thuộc về FreeezeVN.
+      <a href="#" class="fa fa-facebook"></a> 
+      <a href="#" class="fa fa-twitter"></a> 
+      <a href="#" class="fa fa-pinterest"></a> 
+      <a href="#logo"><img src="images/top.png" width=50px/></a>
+    </footer>
+  </body>
+</html>
