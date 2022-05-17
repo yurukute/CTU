@@ -6,6 +6,7 @@
     <link href="images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="js/script.js"></script>
   </head>
   <body>
     <header>
@@ -24,12 +25,12 @@
         <a href="dangky.html">Đăng Ký</a>
         <a href="lienhe.html">Liên Hệ</a>
       </nav>
-      <div class="search-box">
-        <input type="search" id="search" placeholder="Nhập nội dung cần tìm..." />
-        <span class="search-icon"><i class="fa fa-search"></i></span>
+      <form class="search-box" method="GET" id="search-form" action="timkiem.html" onsubmit="return mySearch(event);">
+        <input name="search" type="search" id="search" placeholder="Nhập nội dung cần tìm..." />
+        <button type="submit" class="search-icon"><i class="fa fa-search"></i></button>
         &nbsp;
-        <span class="shopping-cart-icon"><i class="fa fa-shopping-cart"></i></span>
-      </div>
+        <span onclick="window.location.href='donhang.html'" class="shopping-cart-icon"><i class="fa fa-shopping-cart"></i></span>
+      </form>
     </header>
     <main class="one-col">
       <h1>Liên hệ</h1>
@@ -38,33 +39,29 @@
         <b>Địa chỉ: 0123, Tòa Nhà ABC, TP. Cần Thơ</b>
         Nếu bạn có góp ý, vui lòng liên hệ bằng thư điện tử hoặc sử dụng biểu mẫu bên dưới. Xin cám ơn.
       </p>
-      <form method="post" enctype="application/x-www-form-urlencoded">
+      <form method="post" enctype="application/x-www-form-urlencoded" onsubmit="return ctValidate(this);">
         <h1>Góp ý</h1>
-        <table>
-          <tr>
-            <td><label for="name" class="form-icons"><i class="fa fa-user"></i></label></td>
-            <td><input id="name" type="text" name="name" placeholder="Vui lòng nhập Họ tên của bạn" required</td>
-          </tr>
-          <tr>
-            <td><label for="email" class="form-icons"><i class="fa fa-envelope"></i></label></td>
-            <td><input id="email" type="text" name="email" placeholder="Vui lòng nhập địa chỉ Email" required</td>
-          </tr>
-          <tr>
-            <td><label  class="form-icons"><i class="fa fa-list"></i></label></td>
-            <td><select size="1">
+        <div>
+            <label for="name" class="form-icons"><i class="fa fa-user"></i></label>
+            <input id="name" type="text" name="name" placeholder="Vui lòng nhập Họ tên của bạn" required/>
+        </div>
+        <div>
+            <label for="email" class="form-icons"><i class="fa fa-envelope"></i></label>
+            <input id="email" type="text" name="email" placeholder="Vui lòng nhập địa chỉ Email" required/>
+        </div>
+        <div>
+            <label class="form-icons"><i class="fa fa-list"></i></label>
+            <select size="1">
               <option >Về Sảm Phẩm/ Dịch Vụ</option>
               <option >Về Ưu Đãi Thành Viên</option>
               <option >Về Tin Tuyển Dụng</option>
-            </select></td>
-          </tr>            
-          <tr>
-            <td><label class="form-icons"><i class="fa fa-file"></i></label></td>
-            <td><textarea rows="7" cols="50" type="text" name="details" placeholder="Nội dung cần liên hệ"></textarea></td>
-          </tr>
-          <tr>
-            <td ><input type="submit" value="Gửi"/></td>
-          </tr>
-        </table>
+            </select>
+        </div>
+        <div>
+            <label for="details" class="form-icons"><i class="fa fa-sticky-note"></i></label>
+            <textarea id="details" rows="7" cols="50" type="text" name="details" placeholder="Nội dung cần liên hệ" required></textarea>
+        </div>
+        <input type="submit" value="Gửi"/>        
       </form>
     </main>
     <footer>&#169; 2021 Bản quyền thuộc về FreeezeVN.

@@ -296,11 +296,10 @@ section.products span {
 }
 
 .form-icons {
-  padding: 5px;
-  display: flex;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
+  padding: 4px;
+  min-width: 30px;
+  text-align: center;
   color: #fff;
   background-color: #cddc39;
 }
@@ -308,10 +307,6 @@ section.products span {
 form {
   margin: auto;
   width: 50%;
-}
-
-tr, td {
-  vertical-align: bottom;
 }
 
 footer {  
@@ -337,12 +332,4 @@ footer > a[href="#logo"] {
   text-align: center;
   color: #ed4190;
   z-index: 100px;
-}
-
-table.bill {
-  border: 1px ridge;
-}
-
-table.bill th {
-  text-align: center;
 }
