@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import thuvien.tinhtoan.PhepTinh;
 
 public class TestPhepToan {
-	unit_testing.ReadExcelFile testdata = new ReadExcelFile("TestData.xlsx");
+	unit_testing.ReadExcelFile testdata = new ReadExcelFile("../../TestData.xlsx");
 	
 	@Test(dataProvider="congdata")
 	public void TestCong(float a, float b, float result){
