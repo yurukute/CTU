@@ -7,7 +7,7 @@ void setup() {
 
 void loop() {
 	float miliVolt = analogRead(tmp)*Vin/1024;
-  float temp = (miliVolt - 0.5)*100;
+	float temp = (miliVolt - 0.5)*100;
 	Serial.println((String)"Temp: " + temp + "°C");
 	delay(5000);
 }
