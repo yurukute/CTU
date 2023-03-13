@@ -19,10 +19,7 @@ void setup(){
 
 void loop(){
   readSensors();
-  serialPrint();         //task1
-  lcdPrint();            //task2
-  dcMotor(moisture, 50); //task3
-  dcMotor(tempt, 30);    //task4
+  lcdPrint();
   delay(2000);
 }
 
@@ -36,25 +33,12 @@ void readSensors(){
 
 void serialPrint(){
   Serial.println((String)"Moist: " + moisture + "rH");
-  Serial.println((String)"Tempt: " + tempt + char(223) + "C");
+  Serial.println((String)"Tempt: " + tempt + char(176) + "C");
 }
 
 void lcdPrint(){
   lcd.clear();  
-  lcd.print((String)moisture + "rH");
-  //lcd.setCursor(0,1);
-  lcd.setCursor(8,0);
-  lcd.print((String)tempt + char(223) + "C");
-}
-
-void dcMotor(float value, float range){
+  lcd.print((String)"Moist: " + moisture + "rH");
   lcd.setCursor(0,1);
-  if(value <= range){
-    digitalWrite(motorPin, LOW);
-    lcd.print("Motor: OFF");
-  }
-  else {
-    digitalWrite(motorPin, HIGH);
-    lcd.print("Motor: ON ");
-  }
+  lcd.print((String)"Tempt: " + tempt + char(223) + "C");
 }
