@@ -36,7 +36,7 @@ void readSensors(){
 
 void serialPrint(){
   Serial.println((String)"Moist: " + moisture + "rH");
-  Serial.println((String)"Tempt: " + tempt + char(176) + "C");
+  Serial.println((String)"Tempt: " + tempt + char(223) + "C");
 }
 
 void lcdPrint(){
@@ -47,7 +47,7 @@ void lcdPrint(){
   lcd.print((String)tempt + char(223) + "C");
 }
 
-void dcMotor(value, range){
+void dcMotor(float value, float range){
   lcd.setCursor(0,1);
   if(value <= range){
     digitalWrite(motorPin, LOW);
