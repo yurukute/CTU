@@ -9,8 +9,6 @@ float tempt;
 
 void setup(){
   Serial.begin(9600);
-  lcd.begin(16, 2);
-  pinMode(motorPin, OUTPUT);
 }
 
 void loop(){
