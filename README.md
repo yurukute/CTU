@@ -15,7 +15,7 @@ Luận văn tốt nghiệp: Quan trắc chất lượng nước với máy tính
 - [Matrix-752](https://github.com/yurukute/AquaSenseLinux)
 
 ## Một số link khác
-Giáo trình + Slide bài giảng: [OneDrive](https://1drv.ms/f/s!AkdHqh7LBFLAmyaIVZWGYWqM4oes)
+Giáo trình + Slide bài giảng: [OneDrive](https://1drv.ms/f/s!AkdHqh7LBFLAmyYKpFaOy-0Kt0re?e=S87m9f)
 
 Ghi chú: [Notion](https://yurukute.notion.site/yurukute/f4166474020b4203bed2408eafc0b902)
 
